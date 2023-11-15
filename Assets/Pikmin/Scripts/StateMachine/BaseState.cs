@@ -20,10 +20,10 @@ public abstract class BaseState<EState> where EState : Enum
     public abstract void OnTriggerStay(Collider other);
     public abstract void OnTriggerExit(Collider other);
 
-    public virtual bool CheckSurfaceHit(Vector3 origin, Vector3 direction, float sphereCastRadius, float detectionLength, LayerMask surfaceLayer, out RaycastHit frontSurfaceHit, out float surfaceLookAngle)
-    {
-        bool surfaceFront = Physics.SphereCast(origin, sphereCastRadius, direction, out frontSurfaceHit, detectionLength, surfaceLayer);
-        surfaceLookAngle = Vector3.Angle(direction, -frontSurfaceHit.normal);
-        return surfaceFront;
-    }
+    // public virtual bool CheckSurfaceHit(Vector3 origin, Vector3 direction, float sphereCastRadius, float detectionLength, LayerMask surfaceLayer, out RaycastHit frontSurfaceHit, out float surfaceLookAngle)
+    // {
+    //     bool surfaceFront = Physics.SphereCast(origin, sphereCastRadius, direction, out frontSurfaceHit, detectionLength, surfaceLayer);
+    //     surfaceLookAngle = Vector3.Angle(direction, -frontSurfaceHit.normal);
+    //     return surfaceFront;
+    // }
 }
