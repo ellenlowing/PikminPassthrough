@@ -10,7 +10,9 @@ namespace Pikmin
         {
             Idle,
             Walk,
-            Climb
+            Climb,
+            Hang,
+            Throw
         }
 
         [Header("Platform")]
@@ -57,6 +59,12 @@ namespace Pikmin
                 entry.Value.Initialize(this);
             }
 
+            CurrentState = States[PikminState.Idle];
+            CurrentState.EnterState();
+        }
+
+        public void Initialize()
+        {
             CurrentState = States[PikminState.Idle];
             CurrentState.EnterState();
         }

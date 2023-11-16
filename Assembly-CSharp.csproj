@@ -40,16 +40,22 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/2022.3.9f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets/Pikmin/Scripts/Projectile/Projectile.cs" />
      <Compile Include="Assets/Pikmin/Scripts/PikminStateMachine/PikminClimbState.cs" />
      <Compile Include="Assets/Pikmin/Scripts/Misc/AddFloorLayer.cs" />
      <Compile Include="Assets/Pikmin/Scripts/PassthroughPlaneHandler.cs" />
      <Compile Include="Assets/Pikmin/Scripts/Misc/PlaceInFront.cs" />
      <Compile Include="Assets/Pikmin/Scripts/Misc/PlanesIntersection.cs" />
      <Compile Include="Assets/Pikmin/Scripts/PassthroughUtils.cs" />
+     <Compile Include="Assets/Pikmin/Scripts/PikminLauncher.cs" />
      <Compile Include="Assets/Pikmin/Scripts/PikminStateMachine/PikminStateManager.cs" />
      <Compile Include="Assets/Pikmin/Scripts/StateMachine/BaseState.cs" />
      <Compile Include="Assets/Pikmin/Scripts/PikminStateMachine/PikminIdleState.cs" />
+     <Compile Include="Assets/Pikmin/Scripts/Projectile/Reticle.cs" />
      <Compile Include="Assets/Pikmin/Scripts/PikminController.cs" />
+     <Compile Include="Assets/Pikmin/Scripts/Misc/FlockBehavior.cs" />
+     <Compile Include="Assets/Pikmin/Scripts/Projectile/ProjectileLibrary.cs" />
+     <Compile Include="Assets/Pikmin/Scripts/Projectile/DrawProjectile.cs" />
      <Compile Include="Assets/Pikmin/Scripts/StateMachine/StateManager.cs" />
      <Compile Include="Assets/Pikmin/Scripts/Misc/AddWallLayer.cs" />
      <Compile Include="Assets/Pikmin/Scripts/PikminStateMachine/PikminWalkState.cs" />

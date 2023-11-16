@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Pikmin
 {
-    public class PassthruControl : MonoBehaviour
+    public class PikminController : MonoBehaviour
     {
         public Camera sceneCamera;
 

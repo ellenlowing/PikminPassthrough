@@ -33,7 +33,6 @@ public class PassthroughPlaneHandler : MonoBehaviour
             }
             else if (_classification.Contains(OVRSceneManager.Classification.Ceiling))
             {
-                gameObject.tag = "Ceiling";
             }
             else if (_classification.Contains(OVRSceneManager.Classification.WallFace))
             {
