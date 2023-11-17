@@ -10,9 +10,7 @@ namespace Pikmin
         {
             Idle,
             Walk,
-            Climb,
-            Hang,
-            Throw
+            Climb
         }
 
         [Header("Platform")]

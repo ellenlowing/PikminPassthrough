@@ -670,7 +670,6 @@ GameObject:
   - component: {fileID: 3119950666076751985}
   - component: {fileID: 3119950666076751990}
   - component: {fileID: 3119950666076751989}
-  - component: {fileID: 7037410838700910422}
   m_Layer: 0
   m_Name: bluepikmin-agent
   m_TagString: Untagged
@@ -688,8 +687,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9095775226525380147}
   m_Father: {fileID: 0}
@@ -725,7 +724,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -742,41 +741,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &7037410838700910422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3119950666076751994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea50828a3c936432a92b8f6977cb85df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isQuest: 0
-  timeStep: 5
-  runningSpeed: 0.5
-  walkDetectionLength: 0.005
-  walkSphereCastRadius: 0.005
-  maxWalkLookAngle: 90
-  climbingSpeed: 0.1
-  climbDetectionLength: 0.1
-  climbSphereCastRadius: 0.1
-  maxClimbLookAngle: 120
-  movingWallToFloor: 0
-  wallStartPosition: {x: 0, y: 0, z: 0}
-  wallEndPosition: {x: 0, y: 0, z: 0}
-  wallStartQuaternion: {x: 0, y: 0, z: 0, w: 0}
-  wallEndQuaternion: {x: 0, y: 0, z: 0, w: 0}
-  animator: {fileID: 0}
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  floorLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  joystickInput: {x: 0, y: 0}
 --- !u!1 &3119950666131520095
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,17 +43,18 @@
      <Compile Include="Assets/Pikmin/Scripts/Projectile/Projectile.cs" />
      <Compile Include="Assets/Pikmin/Scripts/PikminStateMachine/PikminClimbState.cs" />
      <Compile Include="Assets/Pikmin/Scripts/Misc/AddFloorLayer.cs" />
+     <Compile Include="Assets/Pikmin/Scripts/Controller/PikminController.cs" />
      <Compile Include="Assets/Pikmin/Scripts/PassthroughPlaneHandler.cs" />
      <Compile Include="Assets/Pikmin/Scripts/Misc/PlaceInFront.cs" />
      <Compile Include="Assets/Pikmin/Scripts/Misc/PlanesIntersection.cs" />
      <Compile Include="Assets/Pikmin/Scripts/PassthroughUtils.cs" />
-     <Compile Include="Assets/Pikmin/Scripts/PikminLauncher.cs" />
      <Compile Include="Assets/Pikmin/Scripts/PikminStateMachine/PikminStateManager.cs" />
      <Compile Include="Assets/Pikmin/Scripts/StateMachine/BaseState.cs" />
      <Compile Include="Assets/Pikmin/Scripts/PikminStateMachine/PikminIdleState.cs" />
+     <Compile Include="Assets/Pikmin/Scripts/Simulator-Prototype/PikminLauncher.cs" />
      <Compile Include="Assets/Pikmin/Scripts/Projectile/Reticle.cs" />
-     <Compile Include="Assets/Pikmin/Scripts/PikminController.cs" />
      <Compile Include="Assets/Pikmin/Scripts/Misc/FlockBehavior.cs" />
+     <Compile Include="Assets/Pikmin/Scripts/Simulator-Prototype/FollowLeader.cs" />
      <Compile Include="Assets/Pikmin/Scripts/Projectile/ProjectileLibrary.cs" />
      <Compile Include="Assets/Pikmin/Scripts/Projectile/DrawProjectile.cs" />
      <Compile Include="Assets/Pikmin/Scripts/StateMachine/StateManager.cs" />
@@ -803,11 +804,11 @@
     <Reference Include="Meta.Wit.Composer">
         <HintPath>/Users/ellenlo/games/unity/PikminPassthrough/Library/ScriptAssemblies/Meta.Wit.Composer.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>/Users/ellenlo/games/unity/PikminPassthrough/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
         <HintPath>/Users/ellenlo/games/unity/PikminPassthrough/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+        <HintPath>/Users/ellenlo/games/unity/PikminPassthrough/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
         <HintPath>/Users/ellenlo/games/unity/PikminPassthrough/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
@@ -815,11 +816,11 @@
     <Reference Include="Unity.VisualScripting.Shared.Editor">
         <HintPath>/Users/ellenlo/games/unity/PikminPassthrough/Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>/Users/ellenlo/games/unity/PikminPassthrough/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
         <HintPath>/Users/ellenlo/games/unity/PikminPassthrough/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+        <HintPath>/Users/ellenlo/games/unity/PikminPassthrough/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>/Users/ellenlo/games/unity/PikminPassthrough/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
