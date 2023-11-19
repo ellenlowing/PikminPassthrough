@@ -337,7 +337,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450221806}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8feafc6f1a3e49fd8d53ca609bd2182, type: 3}
   m_Name: 
@@ -648,8 +648,8 @@ MonoBehaviour:
   boidPrefab: {fileID: 3119950666076751994, guid: 88e502343cd1a4275ab019d76f2aaa4b, type: 3}
   leaderTransform: {fileID: 1205762686}
   _speed: 0.8
-  _distanceFromLeader: 0.76
-  _distanceThreshold: 0.88
+  _distanceFromLeader: 0.48
+  _distanceThreshold: 1.31
   _gridSize: {x: 2, y: 10}
   _gridSpace: 0.05
   _numBoids: 20
@@ -688,7 +688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1530326852
 SpriteRenderer:
   m_ObjectHideFlags: 0

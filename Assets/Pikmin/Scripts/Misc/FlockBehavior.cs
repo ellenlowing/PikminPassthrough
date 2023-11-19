@@ -58,6 +58,7 @@ public class FlockBehavior : MonoBehaviour
         Rigidbody ghostRb = leaderGhost.AddComponent<Rigidbody>();
         ghostRb.interpolation = RigidbodyInterpolation.Interpolate;
         ghostRb.useGravity = false;
+        Destroy(leaderGhost.GetComponent<SphereCollider>());
     }
 
     void Update()
@@ -84,7 +85,7 @@ public class FlockBehavior : MonoBehaviour
 
             Vector3 newPosition = GetNewPosition(boid.positionOffset);
 
-            if(!leaderAwayFromPack)
+            if(Vector3.Distance(newPosition, boidTransform.position) < 0.01f)
             {
                 // If pikmin has arrived at new position
                 boidTransform.rotation = Quaternion.LookRotation(groundedTransformPosition - boidTransform.position, Vector3.up);
