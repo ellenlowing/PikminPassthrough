@@ -141,15 +141,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214761230815107649, guid: 940ca5991157c5b418edaf5e5226df05, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.517985
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3214761230815107649, guid: 940ca5991157c5b418edaf5e5226df05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6094764
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3214761230815107649, guid: 940ca5991157c5b418edaf5e5226df05, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.23569429
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3214761230815107649, guid: 940ca5991157c5b418edaf5e5226df05, type: 3}
       propertyPath: m_LocalRotation.w
@@ -524,7 +524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3119950666076751994, guid: 8527467c4ae01460488c18c9e51a0915, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7037410838700910422, guid: 8527467c4ae01460488c18c9e51a0915, type: 3}
       propertyPath: isQuest
@@ -648,12 +648,14 @@ MonoBehaviour:
   boidPrefab: {fileID: 3119950666076751994, guid: 88e502343cd1a4275ab019d76f2aaa4b, type: 3}
   leaderTransform: {fileID: 1205762686}
   _speed: 0.8
-  _distanceFromLeader: 0.5
-  _noise: 0.2
-  numBoids: 10
-  boidFormation: 1
-  gridSize: {x: 2, y: 5}
-  gridSpace: 0.02
+  _distanceFromLeader: 0.76
+  _distanceThreshold: 0.88
+  _gridSize: {x: 2, y: 10}
+  _gridSpace: 0.05
+  _numBoids: 20
+  _leaderChangeRate: 3.47
+  _noise: 0
+  _boidFormation: 0
 --- !u!4 &1445067337
 Transform:
   m_ObjectHideFlags: 0
