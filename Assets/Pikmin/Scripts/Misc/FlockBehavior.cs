@@ -26,7 +26,8 @@ public class FlockBehavior : MonoBehaviour
     {
         Radial,
         Grid,
-        Line
+        Line,
+        Ring
     }
 
     [Header("References")]
@@ -35,14 +36,19 @@ public class FlockBehavior : MonoBehaviour
 
     [Header("Behavior variables")]
     [SerializeField] private float _speed;
-    [SerializeField] private float _distanceFromLeader;
     [SerializeField] private float _distanceThreshold;
+    [SerializeField] private float _turnTolerance;
+    [SerializeField] private float _noise;
+    [SerializeField] private float _leaderMoveDistanceThreshold;
+    [SerializeField] private float _distanceFromDestinationThreshold;
+
+    [Header("Formation")]
+    [SerializeField] private BoidFormation _boidFormation;
+    [SerializeField] private int _numBoids;
     [SerializeField] private Vector2 _gridSize;
     [SerializeField] private float _gridSpace;
-    [SerializeField] private int _numBoids;
-    [SerializeField] private float _leaderChangeRate;
-    [SerializeField] private float _noise;
-    [SerializeField] private BoidFormation _boidFormation;
+    [SerializeField] private float _radius;
+    [SerializeField] private float _ringRadius;
 
     private List<Boid> boids;
 
@@ -53,12 +59,13 @@ public class FlockBehavior : MonoBehaviour
     {
         InitializeBoids();
         leaderGhost = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        leaderGhost.transform.position = GetNewPosition(Vector3.zero);
+        leaderGhost.transform.position = GetNewPosition(leaderTransform, Vector3.zero);
         leaderGhost.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         Rigidbody ghostRb = leaderGhost.AddComponent<Rigidbody>();
         ghostRb.interpolation = RigidbodyInterpolation.Interpolate;
         ghostRb.useGravity = false;
         Destroy(leaderGhost.GetComponent<SphereCollider>());
+        lastLeaderPosition = leaderTransform.position;
     }
 
     void Update()
@@ -72,33 +79,41 @@ public class FlockBehavior : MonoBehaviour
         );
         bool leaderAwayFromPack = Vector3.Distance(leaderGhost.transform.position, groundedTransformPosition) > _distanceThreshold; 
 
-        if(leaderAwayFromPack) 
-        {
-            Vector3 newGhostPosition = GetNewPosition(Vector3.zero);
-            leaderGhost.transform.position = Vector3.MoveTowards(leaderGhost.transform.position, newGhostPosition, step);
-        }
+        float leaderMoveDistance = Vector3.Distance(leaderTransform.position, lastLeaderPosition);
+
+        Vector3 newGhostPosition = GetNewPosition(leaderTransform, Vector3.zero);
+        leaderGhost.transform.position = Vector3.MoveTowards(leaderGhost.transform.position, newGhostPosition, step);
+        Quaternion leaderYRotation = Quaternion.identity;
+        leaderYRotation.eulerAngles = new Vector3(0, leaderTransform.rotation.eulerAngles.y, 0);
+        leaderGhost.transform.rotation = leaderYRotation;
 
         for(int i = 0; i < _numBoids; i++)
         {
             Boid boid = boids[i];
             Transform boidTransform = boid.gameObject.transform;
 
-            Vector3 newPosition = GetNewPosition(boid.positionOffset);
-
-            if(Vector3.Distance(newPosition, boidTransform.position) < 0.01f)
-            {
-                // If pikmin has arrived at new position
-                boidTransform.rotation = Quaternion.LookRotation(groundedTransformPosition - boidTransform.position, Vector3.up);
-                boid.anim.SetInteger("state", 0);
-            }
-            else
+            Vector3 newPosition = GetNewPosition(leaderGhost.transform, boid.positionOffset);
+            float distanceFromDestination = Vector3.Distance(boidTransform.position, newPosition);
+            
+            if(leaderAwayFromPack || 
+                (distanceFromDestination > _distanceFromDestinationThreshold) || 
+                (distanceFromDestination <= _distanceFromDestinationThreshold && leaderMoveDistance > _leaderMoveDistanceThreshold)
+            )
             {
                 // If pikmin is still walking
                 boidTransform.position = Vector3.MoveTowards(boidTransform.position, newPosition, step);
                 boidTransform.rotation = Quaternion.LookRotation(newPosition - boidTransform.position, Vector3.up);
                 boid.anim.SetInteger("state", 1);
             }
+            else 
+            {
+                // If pikmin has arrived at new position
+                boidTransform.rotation = Quaternion.LookRotation(groundedTransformPosition - boidTransform.position, Vector3.up);
+                boid.anim.SetInteger("state", 0);
+            }
         }
+
+        lastLeaderPosition = leaderTransform.position;
     }
     
     private void InitializeBoids()
@@ -107,7 +122,7 @@ public class FlockBehavior : MonoBehaviour
         for(int i = 0; i < _numBoids; i++)
         {
             Vector3 offset = GetPositionOffset(i);
-            GameObject obj = Instantiate(boidPrefab, GetNewPosition(offset), Quaternion.identity);
+            GameObject obj = Instantiate(boidPrefab, GetNewPosition(leaderTransform, offset), Quaternion.identity);
             Boid boid = new Boid(i, obj, offset);
             boids.Add(boid);
         }
@@ -121,17 +136,17 @@ public class FlockBehavior : MonoBehaviour
         }
     }
 
-    private Vector3 GetNewPosition(Vector3 positionOffset)
+    private Vector3 GetNewPosition(Transform refTransform, Vector3 positionOffset)
     {
-        Vector3 newOffset = leaderTransform.forward * positionOffset.z + leaderTransform.right * positionOffset.x;
-        Vector3 newPosition = leaderTransform.position + newOffset;
+        Vector3 newOffset = refTransform.forward * positionOffset.z + refTransform.right * positionOffset.x;
+        Vector3 newPosition = refTransform.position + newOffset;
         if(_boidFormation == BoidFormation.Radial)
         {
-            newPosition += newOffset * (_distanceFromLeader - 1f);
+            newPosition += newOffset * (_radius - 1f);
         }
         else
         {
-            newPosition += newOffset - leaderTransform.forward * _distanceFromLeader;
+            newPosition += newOffset - refTransform.forward * _radius;
         }
 
         newPosition.y = 0;
@@ -158,6 +173,25 @@ public class FlockBehavior : MonoBehaviour
             float z = Mathf.Sin(angle);
             return new Vector3(x, 0f, z);
         }
+        else if (_boidFormation == BoidFormation.Ring)
+        {
+            int rowNum = GetPositiveRoot(1, 1, -2 * (index + 1));
+            int numBoidsPerRow = rowNum * (rowNum + 1) / 2 - (rowNum - 1) * rowNum / 2;
+            int rowStartIndex = rowNum * (rowNum + 1) / 2 - numBoidsPerRow ;
+
+            float angle = -0.5f;
+            if(numBoidsPerRow > 1)
+            {
+                angle += Mathf.Lerp(-0.0833f, 0.0833f, (float)(index - rowStartIndex) / (float)(numBoidsPerRow - 1));
+            }
+            angle *= Mathf.PI;
+            float radius = (float)rowNum * _ringRadius;
+            float x = radius * Mathf.Cos(angle);
+            float z = radius * Mathf.Sin(angle);
+
+            Debug.Log("HI " + index + " " + rowNum + " " + numBoidsPerRow + " " + rowStartIndex + " " + (float)(index - rowStartIndex) / (float)(numBoidsPerRow - 1));
+            return new Vector3(x, 0, z);
+        }
         return Vector3.zero;
     }
 
@@ -171,5 +205,14 @@ public class FlockBehavior : MonoBehaviour
     {
         var noise = Mathf.PerlinNoise(pos.x * _noise, pos.z * _noise);
         return new Vector3(noise, 0, noise);
+    }
+
+    private int GetPositiveRoot(float a, float b, float c)
+    {
+        float d = Mathf.Sqrt(b * b - 4 * a * c);
+        float x1 = (-b + d) / (2 * a);
+        float x2 = (-b - d) / (2 * a);
+        float xpos = x1 >= 0 ? x1 : x2;
+        return Mathf.CeilToInt(xpos);
     }
 }

@@ -116,7 +116,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b3afa3613cbc403a82cc3b30234e86d, type: 2}
+  - {fileID: 2100000, guid: 8f76d05fc6c7d415dbe808e68f59cab9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1311,7 +1311,7 @@ PrefabInstance:
     - target: {fileID: -6796009744405785935, guid: f83d08d2e1f34462d8ebc56365a97917, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0514773465c3f4362bb521280ef42e1e, type: 2}
+      objectReference: {fileID: 2100000, guid: c71c0cc9474754bb28c77e24adc90132, type: 2}
     - target: {fileID: 919132149155446097, guid: f83d08d2e1f34462d8ebc56365a97917, type: 3}
       propertyPath: m_Name
       value: PikminLeaf
