@@ -37,7 +37,6 @@ public class FlockBehavior : MonoBehaviour
     [Header("Behavior variables")]
     [SerializeField] private float _speed;
     [SerializeField] private float _distanceThreshold;
-    [SerializeField] private float _turnTolerance;
     [SerializeField] private float _noise;
     [SerializeField] private float _leaderMoveDistanceThreshold;
     [SerializeField] private float _distanceFromDestinationThreshold;
@@ -65,6 +64,7 @@ public class FlockBehavior : MonoBehaviour
         ghostRb.interpolation = RigidbodyInterpolation.Interpolate;
         ghostRb.useGravity = false;
         Destroy(leaderGhost.GetComponent<SphereCollider>());
+        Destroy(leaderGhost.GetComponent<MeshRenderer>());
         lastLeaderPosition = leaderTransform.position;
     }
 
@@ -81,12 +81,15 @@ public class FlockBehavior : MonoBehaviour
 
         float leaderMoveDistance = Vector3.Distance(leaderTransform.position, lastLeaderPosition);
 
-        Vector3 newGhostPosition = GetNewPosition(leaderTransform, Vector3.zero);
-        leaderGhost.transform.position = Vector3.MoveTowards(leaderGhost.transform.position, newGhostPosition, step);
-        Quaternion leaderYRotation = Quaternion.identity;
-        leaderYRotation.eulerAngles = new Vector3(0, leaderTransform.rotation.eulerAngles.y, 0);
-        leaderGhost.transform.rotation = leaderYRotation;
-
+        if(leaderAwayFromPack)
+        {
+            Vector3 newGhostPosition = GetNewPosition(leaderTransform, Vector3.zero);
+            leaderGhost.transform.position = Vector3.MoveTowards(leaderGhost.transform.position, newGhostPosition, step);
+            Quaternion leaderYRotation = Quaternion.identity;
+            leaderYRotation.eulerAngles = new Vector3(0, leaderTransform.rotation.eulerAngles.y, 0);
+            leaderGhost.transform.rotation = leaderYRotation;
+        }
+        
         for(int i = 0; i < _numBoids; i++)
         {
             Boid boid = boids[i];

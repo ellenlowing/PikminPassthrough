@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 753234542}
   - component: {fileID: 753234543}
   - component: {fileID: 753234544}
+  - component: {fileID: 753234545}
   m_Layer: 0
   m_Name: Leader
   m_TagString: Untagged
@@ -437,7 +438,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753234537}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99f4f624fe52f470bbe820bb59d0b516, type: 3}
   m_Name: 
@@ -446,7 +447,6 @@ MonoBehaviour:
   leaderTransform: {fileID: 753234541}
   _speed: 0.5
   _distanceThreshold: 0.29
-  _turnTolerance: 0
   _noise: 0
   _leaderMoveDistanceThreshold: 0.21
   _distanceFromDestinationThreshold: 0.01
@@ -495,6 +495,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d82a94bd336414dba9b1497244058f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &753234545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753234537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f4f624fe52f470bbe820bb59d0b516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boidPrefab: {fileID: 3119950666076751994, guid: 88e502343cd1a4275ab019d76f2aaa4b, type: 3}
+  leaderTransform: {fileID: 753234541}
+  _speed: 0.5
+  _distanceThreshold: 0.15
+  _noise: 0
+  _leaderMoveDistanceThreshold: 0.21
+  _distanceFromDestinationThreshold: 0.01
+  _boidFormation: 0
+  _numBoids: 21
+  _gridSize: {x: 2, y: 10}
+  _gridSpace: 0.05
+  _radius: 0.5
+  _ringRadius: 0.05
 --- !u!1 &851010508
 GameObject:
   m_ObjectHideFlags: 0

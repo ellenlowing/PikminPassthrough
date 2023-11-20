@@ -626,6 +626,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1445067337}
   - component: {fileID: 1445067336}
+  - component: {fileID: 1445067338}
   m_Layer: 0
   m_Name: PikminFollow
   m_TagString: Untagged
@@ -640,25 +641,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445067335}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99f4f624fe52f470bbe820bb59d0b516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boidPrefab: {fileID: 3119950666076751994, guid: 88e502343cd1a4275ab019d76f2aaa4b, type: 3}
+  boidPrefab: {fileID: 3119950666076751994, guid: 4aa1ecc41cb5b4d0fbd4eb8cc68f2f51, type: 3}
   leaderTransform: {fileID: 1205762686}
-  _speed: 0.8
-  _distanceThreshold: 0.3
-  _turnTolerance: 0
+  _speed: 2
+  _distanceThreshold: 0.5
   _noise: 0
-  _leaderMoveDistanceThreshold: 0.1
+  _leaderMoveDistanceThreshold: 0.3
   _distanceFromDestinationThreshold: 0.01
-  _boidFormation: 0
-  _numBoids: 20
+  _boidFormation: 3
+  _numBoids: 21
   _gridSize: {x: 2, y: 10}
   _gridSpace: 0.05
-  _radius: 0
-  _ringRadius: 0
+  _radius: 0.1
+  _ringRadius: 0.1
 --- !u!4 &1445067337
 Transform:
   m_ObjectHideFlags: 0
@@ -674,6 +674,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1445067338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445067335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f4f624fe52f470bbe820bb59d0b516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boidPrefab: {fileID: 3119950666076751994, guid: 4aa1ecc41cb5b4d0fbd4eb8cc68f2f51, type: 3}
+  leaderTransform: {fileID: 1205762686}
+  _speed: 2
+  _distanceThreshold: 0.25
+  _noise: 0
+  _leaderMoveDistanceThreshold: 0.21
+  _distanceFromDestinationThreshold: 0.01
+  _boidFormation: 0
+  _numBoids: 21
+  _gridSize: {x: 2, y: 10}
+  _gridSpace: 0.05
+  _radius: 0.5
+  _ringRadius: 0.05
 --- !u!1 &1530326851
 GameObject:
   m_ObjectHideFlags: 0
