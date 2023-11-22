@@ -136,7 +136,6 @@ namespace PikminPack
             while(t < time)
             {
                 transform.position = ProjectileLibrary.GetPositionAtTime(launch, direction, v0, angle, t);
-                transform.rotation = Quaternion.LookRotation(nextPosition - transform.position, Vector3.up);
                 transform.rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(rotationX, 0, 0);
 
                 rotationX -= Time.deltaTime * _inLaunchSpinSpeed;
