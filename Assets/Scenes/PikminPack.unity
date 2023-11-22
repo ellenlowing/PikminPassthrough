@@ -1391,7 +1391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8208b7127c8e645dab773aa2275b6900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pikminPrefab: {fileID: 2922501334484497407, guid: fd1ec5e53346a4cb9a83a5f9e6aab12d, type: 3}
+  _pikminPrefab: {fileID: 6054552585659597304, guid: 5fac27b8363ec4842b58ab458c348db6, type: 3}
   _pikminUnitAmount: 1
   _state: 0
   _launchButton: 67108864
