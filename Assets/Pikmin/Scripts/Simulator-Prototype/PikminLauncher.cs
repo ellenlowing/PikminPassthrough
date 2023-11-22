@@ -11,8 +11,8 @@ public class PikminLauncher : MonoBehaviour
 
     private List<Vector3> projectilePositions;
     private LineRenderer line;
-    private float v0, time, angle, height;
-    private Vector3 groundDirectionNorm;
+    public float v0, time, angle, height;
+    public Vector3 groundDirectionNorm;
 
     void Start()
     {
@@ -21,14 +21,14 @@ public class PikminLauncher : MonoBehaviour
 
     void Update()
     {   
-        if(OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
+        if(OVRInput.Get(OVRInput.RawButton.RIndexTrigger) || Input.GetKey(KeyCode.Space))
         {
             DrawProjectile();
             pikmin.transform.position = transform.position;
             pikmin.transform.rotation = transform.rotation;
         }
 
-        if(OVRInput.GetUp(OVRInput.RawButton.RIndexTrigger))
+        if(OVRInput.GetUp(OVRInput.RawButton.RIndexTrigger) ||  Input.GetKeyUp(KeyCode.Space))
         {
             // Throw pikmin
             StopAllCoroutines();

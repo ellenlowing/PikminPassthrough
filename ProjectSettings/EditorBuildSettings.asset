@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PikminController.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/PikminSimulator.unity
+  - enabled: 0
+    path: Assets/Scenes/SimulatorPrototype.unity
     guid: f6e1da1126ea94350aa9e39f3b019668
+  - enabled: 1
+    path: Assets/Scenes/PikminPack.unity
+    guid: f2ed7c0c18e3b4726b61a03b882665b2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d4bbfba36a5bd484c807e263248694eb, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 03d36e56c258d4fc59a7b1b9dc9363d2, type: 2}
