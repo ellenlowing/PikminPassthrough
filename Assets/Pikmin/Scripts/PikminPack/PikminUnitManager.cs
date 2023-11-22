@@ -25,11 +25,13 @@ namespace PikminPack
         // Serialized fields
         [SerializeField] private PikminUnit _pikminPrefab;
         [SerializeField] private int _pikminUnitAmount;
-        [SerializeField] private PikminState _state;
-        [SerializeField] private OVRInput.RawButton _launchButton;
+        [SerializeField] private OVRHand _rightHand;
+        [SerializeField] private Transform _rightHandRayPointer;
+        [SerializeField] private bool _debugMode;
 
-        // Variables to store temporary information
+        // Private variables
         private PikminUnit _unitToLaunch;
+        private bool _isRightIndexFingerPinching;
 
         // Component References
 
@@ -52,25 +54,55 @@ namespace PikminPack
 
         void Update()
         {
-
             // Handle input for Launch Projectile
-            if(OVRInput.Get(_launchButton) || Input.GetKey(KeyCode.Space))
+            if(!_debugMode)
             {
-                _unitToLaunch = PikminUnits[_pikminUnitAmount - 1];
-                _unitToLaunch.SetState(PikminState.PreLaunch);
-                Raycaster.Prelaunch = true;
-            }
-            if(OVRInput.GetUp(_launchButton) || Input.GetKeyUp(KeyCode.Space))
-            {
-                if(_unitToLaunch)
+                if(_rightHand.IsTracked)
                 {
-                    // pass projectile params to unit
-                    _unitToLaunch.SetState(PikminState.InLaunch);
-                    _unitToLaunch = null;
-                    Raycaster.Prelaunch = false;
+                    Raycaster.transform.SetPositionAndRotation(_rightHandRayPointer.position, _rightHandRayPointer.rotation);
+
+                    // Check pinching status
+                    _isRightIndexFingerPinching = _rightHand.GetFingerIsPinching(OVRHand.HandFinger.Index);
+                    if(_isRightIndexFingerPinching)
+                    {
+                        HandlePrelaunch();
+                    }
+                    else if (!_isRightIndexFingerPinching && _unitToLaunch)
+                    {
+                        HandleLaunch();
+                    }
                 }
             }
+            else
+            {
+                // Debug helper
+                if(Input.GetKey(KeyCode.Space))
+                {
+                    HandlePrelaunch();
+                }
+                if(Input.GetKeyUp(KeyCode.Space))
+                {
+                    if(_unitToLaunch)
+                    {
+                        HandleLaunch();
+                    }
+                }
+            }
+            
+        }
+
+        void HandlePrelaunch()
+        {
+            _unitToLaunch = PikminUnits[_pikminUnitAmount - 1];
+            _unitToLaunch.SetState(PikminState.PreLaunch);
+            Raycaster.Prelaunch = true;
+        }
+
+        void HandleLaunch()
+        {
+            _unitToLaunch.SetState(PikminState.InLaunch);
+            _unitToLaunch = null;
+            Raycaster.Prelaunch = false;
         }
     }
-
 }

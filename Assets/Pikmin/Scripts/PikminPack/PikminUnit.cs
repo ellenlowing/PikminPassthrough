@@ -16,6 +16,7 @@ namespace PikminPack
 
         [SerializeField] private Transform _topJoint;
         [SerializeField] private float _launchSpeed;
+        [SerializeField] private float _inLaunchSpinSpeed;
 
         void Start()
         {
@@ -120,24 +121,25 @@ namespace PikminPack
 
         void UpdatePreLaunchState()
         {
-            // TODO add offset: should grab pikmin at the tip of head (tail of leaf)
             transform.position = _raycaster.transform.position - (_topJoint.position - transform.position);
-            transform.rotation = Quaternion.LookRotation(-_raycaster.transform.forward, Vector3.up);
+            transform.rotation = Quaternion.LookRotation(-_raycaster.transform.forward, Vector3.up); 
         }
 
         void UpdateInLaunchState()
         {
-            // TODO rotate pikmin in air 
         }
 
         IEnumerator ProjectileMovement(Vector3 launch, Vector3 direction, float v0, float angle, float time)
         {
             float t = 0;
+            float rotationX = 0;
             while(t < time)
             {
                 transform.position = ProjectileLibrary.GetPositionAtTime(launch, direction, v0, angle, t);
-                Vector3 nextPosition = ProjectileLibrary.GetPositionAtTime(launch, direction, v0, angle, t + Time.deltaTime * _launchSpeed);
                 transform.rotation = Quaternion.LookRotation(nextPosition - transform.position, Vector3.up);
+                transform.rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(rotationX, 0, 0);
+
+                rotationX -= Time.deltaTime * _inLaunchSpinSpeed;
                 t += Time.deltaTime * _launchSpeed;
                 yield return null;
             }
