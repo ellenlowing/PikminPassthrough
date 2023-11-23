@@ -10,6 +10,7 @@ namespace PikminPack
         FollowLeader,
         PreLaunch,
         InLaunch,
+        Climb,
         ReturnToSquad
     }
 
@@ -21,6 +22,7 @@ namespace PikminPack
         public readonly int Hang = Animator.StringToHash("Hang");
         public readonly int Notice = Animator.StringToHash("Notice");
         public readonly int Fall = Animator.StringToHash("Fall");
+        public readonly int Climb = Animator.StringToHash("Climb");
 
         // Serialized fields
         [SerializeField] private PikminUnit _pikminPrefab;

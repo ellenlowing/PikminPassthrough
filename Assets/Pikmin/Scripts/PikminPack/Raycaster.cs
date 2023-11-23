@@ -14,6 +14,7 @@ public class Raycaster : MonoBehaviour
     public float LaunchHeight;
     public Vector3 GroundDirectionNorm;
     public Vector3 LaunchPosition;
+    public RaycastHit RaycastHit;
 
     void Start()
     {
@@ -26,20 +27,18 @@ public class Raycaster : MonoBehaviour
         // Calculate path
         if(Prelaunch)
         {
+            GetRaycastHit();
             LaunchPosition = transform.position;
-            ProjectileLibrary.CalculatePathFromLaunchToTarget(GetRaycastHitpoint(), LaunchPosition, out GroundDirectionNorm, out LaunchHeight, out V0, out LaunchDuration, out LaunchAngle);
+            ProjectileLibrary.CalculatePathFromLaunchToTarget(RaycastHit.point, LaunchPosition, out GroundDirectionNorm, out LaunchHeight, out V0, out LaunchDuration, out LaunchAngle);
             Vector3 [] projectilePositions = ProjectileLibrary.GetProjectilePositions(LaunchPosition, GroundDirectionNorm, V0, LaunchDuration, LaunchAngle);
             DrawProjectile(projectilePositions);
         }
         
     }
 
-    public Vector3 GetRaycastHitpoint()
+    public void GetRaycastHit()
     {
-        RaycastHit raycastHit;
-        Physics.Raycast(transform.position, transform.forward, out raycastHit);
-
-        return raycastHit.point;
+        Physics.Raycast(transform.position, transform.forward, out RaycastHit);
     }
 
     public void DrawProjectile(Vector3 [] projectilePositions)

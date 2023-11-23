@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2880501209576806901}
   - component: {fileID: 2530738449294831122}
   - component: {fileID: 8823177945334558738}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,9 +118,9 @@ GameObject:
   - component: {fileID: 7826331834816069062}
   - component: {fileID: 9204737922118487399}
   - component: {fileID: 2008515790329877512}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,9 +224,9 @@ GameObject:
   - component: {fileID: 5862545934635977247}
   - component: {fileID: 4128248251743656418}
   - component: {fileID: 1407454488100916154}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -330,9 +330,9 @@ GameObject:
   - component: {fileID: 5141580074322508710}
   - component: {fileID: 8608564452326845926}
   - component: {fileID: 5604797702357834436}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ceiling
-  m_TagString: Untagged
+  m_TagString: Ceiling
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -436,9 +436,9 @@ GameObject:
   - component: {fileID: 4098770871967527110}
   - component: {fileID: 6931138780050291809}
   - component: {fileID: 6850223375440395129}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Interaction.Input;
 using UnityEngine;
 
 namespace PikminPack
@@ -46,6 +47,10 @@ namespace PikminPack
                     UpdateInLaunchState();
                     break;
 
+                case PikminState.Climb:
+                    UpdateClimbState();
+                    break;
+
                 case PikminState.ReturnToSquad:
                     break;
             }
@@ -78,6 +83,10 @@ namespace PikminPack
                     case PikminState.InLaunch:
                         EnterInLaunchState();
                         break;
+                    
+                    case PikminState.Climb:
+                        EnterClimbState();
+                        break;
 
                     case PikminState.ReturnToSquad:
                         break;
@@ -109,6 +118,11 @@ namespace PikminPack
             StartCoroutine(ProjectileMovement(_raycaster.LaunchPosition, _raycaster.GroundDirectionNorm, _raycaster.V0, _raycaster.LaunchAngle, _raycaster.LaunchDuration));
         }
 
+        void EnterClimbState()
+        {
+            _animator.CrossFade(_manager.Climb, 0, 0);
+        }
+
         void UpdateIdleState()
         {
             
@@ -129,6 +143,11 @@ namespace PikminPack
         {
         }
 
+        void UpdateClimbState()
+        {
+
+        }
+
         IEnumerator ProjectileMovement(Vector3 launch, Vector3 direction, float v0, float angle, float time)
         {
             float t = 0;
@@ -142,8 +161,24 @@ namespace PikminPack
                 t += Time.deltaTime * _launchSpeed;
                 yield return null;
             }
-
-            SetState(PikminState.Idle);
+            HandleLanding();
+        }
+        
+        void HandleLanding()
+        {
+            RaycastHit hit = _raycaster.RaycastHit;
+            if(hit.collider.CompareTag("Floor"))
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(_raycaster.GroundDirectionNorm), 360);
+                SetState(PikminState.Idle);
+            }
+            else if (hit.collider.CompareTag("Wall"))
+            {
+                // look at -hit.transform.FORWARD for quest
+                // -hit.transform.up if testing on mac
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(-hit.transform.forward, Vector3.up), 360);
+                SetState(PikminState.Climb);
+            }
         }
     }
 

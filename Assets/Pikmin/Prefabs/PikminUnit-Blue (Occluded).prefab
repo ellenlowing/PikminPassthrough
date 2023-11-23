@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 784738755188881445, guid: fd1ec5e53346a4cb9a83a5f9e6aab12d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0514773465c3f4362bb521280ef42e1e, type: 2}
+    - target: {fileID: 2922501334484497407, guid: fd1ec5e53346a4cb9a83a5f9e6aab12d, type: 3}
+      propertyPath: _launchSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922501334484497407, guid: fd1ec5e53346a4cb9a83a5f9e6aab12d, type: 3}
+      propertyPath: _inLaunchSpinSpeed
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 3119950665140160247, guid: fd1ec5e53346a4cb9a83a5f9e6aab12d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b3afa3613cbc403a82cc3b30234e86d, type: 2}
     - target: {fileID: 3119950666076751985, guid: fd1ec5e53346a4cb9a83a5f9e6aab12d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3119950666076751994, guid: fd1ec5e53346a4cb9a83a5f9e6aab12d, type: 3}
       propertyPath: m_Name
-      value: PikminUnit-Blue
+      value: PikminUnit-Blue (Occluded)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

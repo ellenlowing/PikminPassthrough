@@ -756,8 +756,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 0
   _topJoint: {fileID: 3119950665938379958}
-  _launchSpeed: 0.5
-  _inLaunchSpinSpeed: 26.75
+  _launchSpeed: 1.2
+  _inLaunchSpinSpeed: 540
 --- !u!1 &3119950666131520095
 GameObject:
   m_ObjectHideFlags: 0
