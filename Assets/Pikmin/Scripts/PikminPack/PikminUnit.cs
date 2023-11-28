@@ -148,6 +148,11 @@ namespace PikminPack
 
         }
 
+        public bool GetInSquad()
+        {
+            return _inSquad;
+        }
+
         IEnumerator ProjectileMovement(Vector3 launch, Vector3 direction, float v0, float angle, float time)
         {
             float t = 0;
@@ -174,8 +179,6 @@ namespace PikminPack
             }
             else if (hit.collider.CompareTag("Wall"))
             {
-                // look at -hit.transform.FORWARD for quest
-                // -hit.transform.up if testing on mac
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(-hit.transform.forward, Vector3.up), 360);
                 SetState(PikminState.Climb);
             }

@@ -39,7 +39,8 @@ namespace PikminPack
 
         // Public members
         public static PikminUnitManager Instance;
-        public List<PikminUnit> PikminUnits { get; private set; } = new List<PikminUnit>();
+        public List<PikminUnit> InSquadPikminUnits { get; private set; } = new List<PikminUnit>();
+        public List<PikminUnit> WildPikminUnits { get; private set; } = new List<PikminUnit>();
         public Raycaster Raycaster;
         
         void Awake() => Instance = this;
@@ -50,7 +51,7 @@ namespace PikminPack
             {
                 var pikminUnit = Instantiate(_pikminPrefab);
                 pikminUnit.Init(this, Raycaster);
-                PikminUnits.Add(pikminUnit);
+                InSquadPikminUnits.Add(pikminUnit);
             }
         }
 
@@ -65,28 +66,28 @@ namespace PikminPack
 
                     // Check pinching status
                     _isRightIndexFingerPinching = _rightHand.GetFingerIsPinching(OVRHand.HandFinger.Index);
-                    if(_isRightIndexFingerPinching)
+                    if(_isRightIndexFingerPinching && !_unitToLaunch)
                     {
                         HandlePrelaunch();
                     }
-                    else if (!_isRightIndexFingerPinching && _unitToLaunch)
+                    else if (!_isRightIndexFingerPinching && _unitToLaunch != null && _unitToLaunch.TryGetComponent<PikminUnit>(out PikminUnit unit))
                     {
-                        HandleLaunch();
+                        HandleLaunch(unit);
                     }
                 }
             }
             else
             {
                 // Debug helper
-                if(Input.GetKey(KeyCode.Space))
+                if(Input.GetKey(KeyCode.Space) && !_unitToLaunch)
                 {
                     HandlePrelaunch();
                 }
                 if(Input.GetKeyUp(KeyCode.Space))
                 {
-                    if(_unitToLaunch)
+                    if(_unitToLaunch != null && _unitToLaunch.TryGetComponent<PikminUnit>(out PikminUnit unit))
                     {
-                        HandleLaunch();
+                        HandleLaunch(unit);
                     }
                 }
             }
@@ -95,14 +96,23 @@ namespace PikminPack
 
         void HandlePrelaunch()
         {
-            _unitToLaunch = PikminUnits[_pikminUnitAmount - 1];
-            _unitToLaunch.SetState(PikminState.PreLaunch);
-            Raycaster.Prelaunch = true;
+            if(InSquadPikminUnits.Count > 0)
+            {
+                _unitToLaunch = InSquadPikminUnits[0];
+            }
+
+            if(_unitToLaunch != null && _unitToLaunch.TryGetComponent<PikminUnit>(out PikminUnit unit))
+            {
+                unit.SetState(PikminState.PreLaunch);
+                Raycaster.Prelaunch = true;
+            }
         }
 
-        void HandleLaunch()
+        void HandleLaunch(PikminUnit unit)
         {
-            _unitToLaunch.SetState(PikminState.InLaunch);
+            unit.SetState(PikminState.InLaunch);
+            InSquadPikminUnits.Remove(unit);
+            WildPikminUnits.Add(unit);
             _unitToLaunch = null;
             Raycaster.Prelaunch = false;
         }

@@ -64,31 +64,31 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/2022.3.9f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Controller/PikminControllerStateMachine/PikminIdleState.cs" />
     <Compile Include="Assets/Pikmin/Scripts/PikminPack/PikminUnit.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Misc/PlaceInFront.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/PikminControllerStateMachine/PikminClimbState.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/FlockBehavior.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Misc/ControlLeader.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/Simulator-Prototype/Projectile/Projectile.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/Simulator-Prototype/Projectile/DrawProjectile.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Controller/PikminControllerStateMachine/PikminClimbState.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/PikminLauncher.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Misc/AddWallLayer.cs" />
     <Compile Include="Assets/Pikmin/Scripts/PikminPack/PikminUnitManager.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/PikminControllerStateMachine/PikminWalkState.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/Simulator-Prototype/Projectile/Reticle.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/Projectile/DrawProjectile.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Misc/AddFloorLayer.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/Controller/PikminController.cs" />
     <Compile Include="Assets/Pikmin/Scripts/PassthroughPlaneHandler.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Controller/PikminController.cs" />
     <Compile Include="Assets/Pikmin/Scripts/PikminPack/GameManager.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Misc/PlanesIntersection.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/PikminControllerStateMachine/PikminIdleState.cs" />
     <Compile Include="Assets/Pikmin/Scripts/PassthroughUtils.cs" />
     <Compile Include="Assets/Pikmin/Scripts/PikminPack/Raycaster.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/PikminControllerStateMachine/PikminStateManager.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/Simulator-Prototype/Projectile/ProjectileLibrary.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/Projectile/Reticle.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/Projectile/ProjectileLibrary.cs" />
     <Compile Include="Assets/Pikmin/Scripts/StateMachine/BaseState.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/Simulator-Prototype/PikminLauncher.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Controller/PikminControllerStateMachine/PikminStateManager.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Controller/PikminControllerStateMachine/PikminWalkState.cs" />
     <Compile Include="Assets/Pikmin/Scripts/StateMachine/StateManager.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/Projectile/Projectile.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Misc/TestXRI.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/Simulator-Prototype/FlockBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
