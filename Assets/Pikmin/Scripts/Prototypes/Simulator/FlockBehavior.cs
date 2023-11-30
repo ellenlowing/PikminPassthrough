@@ -27,7 +27,8 @@ public class FlockBehavior : MonoBehaviour
         Radial,
         Grid,
         Line,
-        Ring
+        Ring,
+        Phyllotaxis
     }
 
     [Header("References")]
@@ -48,6 +49,7 @@ public class FlockBehavior : MonoBehaviour
     [SerializeField] private float _gridSpace;
     [SerializeField] private float _radius;
     [SerializeField] private float _ringRadius;
+    [SerializeField] private float _phylloc;
 
     private List<Boid> boids;
 
@@ -63,6 +65,7 @@ public class FlockBehavior : MonoBehaviour
         Rigidbody ghostRb = leaderGhost.AddComponent<Rigidbody>();
         ghostRb.interpolation = RigidbodyInterpolation.Interpolate;
         ghostRb.useGravity = false;
+        ghostRb.isKinematic = true;
         Destroy(leaderGhost.GetComponent<SphereCollider>());
         Destroy(leaderGhost.GetComponent<MeshRenderer>());
         lastLeaderPosition = leaderTransform.position;
@@ -114,6 +117,11 @@ public class FlockBehavior : MonoBehaviour
                 boidTransform.rotation = Quaternion.LookRotation(groundedTransformPosition - boidTransform.position, Vector3.up);
                 boid.anim.SetInteger("state", 0);
             }
+
+            if(i == 0)
+            {
+                Debug.Log("Check " + leaderAwayFromPack);
+            }
         }
 
         lastLeaderPosition = leaderTransform.position;
@@ -143,7 +151,7 @@ public class FlockBehavior : MonoBehaviour
     {
         Vector3 newOffset = refTransform.forward * positionOffset.z + refTransform.right * positionOffset.x;
         Vector3 newPosition = refTransform.position + newOffset;
-        if(_boidFormation == BoidFormation.Radial)
+        if(_boidFormation == BoidFormation.Radial || _boidFormation == BoidFormation.Phyllotaxis)
         {
             newPosition += newOffset * (_radius - 1f);
         }
@@ -192,7 +200,14 @@ public class FlockBehavior : MonoBehaviour
             float x = radius * Mathf.Cos(angle);
             float z = radius * Mathf.Sin(angle);
 
-            Debug.Log("HI " + index + " " + rowNum + " " + numBoidsPerRow + " " + rowStartIndex + " " + (float)(index - rowStartIndex) / (float)(numBoidsPerRow - 1));
+            return new Vector3(x, 0, z);
+        }
+        else if (_boidFormation == BoidFormation.Phyllotaxis)
+        {
+            float a = (float)index * 137.5f * Mathf.Deg2Rad;
+            float r = _phylloc * Mathf.Sqrt(index);
+            float x = r * Mathf.Cos(a);
+            float z = r * Mathf.Sin(a);
             return new Vector3(x, 0, z);
         }
         return Vector3.zero;

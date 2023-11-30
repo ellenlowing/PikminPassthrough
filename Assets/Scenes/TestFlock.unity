@@ -232,7 +232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &305182473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &557015120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -494,6 +494,7 @@ GameObject:
   - component: {fileID: 753234543}
   - component: {fileID: 753234544}
   - component: {fileID: 753234545}
+  - component: {fileID: 753234546}
   m_Layer: 0
   m_Name: Leader
   m_TagString: Untagged
@@ -612,6 +613,7 @@ MonoBehaviour:
   _gridSpace: 0.05
   _radius: 0
   _ringRadius: 0.05
+  _phylloc: 0
 --- !u!54 &753234543
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -635,7 +637,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -651,7 +653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d82a94bd336414dba9b1497244058f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _launchButton: 0
 --- !u!114 &753234545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -659,7 +660,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753234537}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99f4f624fe52f470bbe820bb59d0b516, type: 3}
   m_Name: 
@@ -677,6 +678,33 @@ MonoBehaviour:
   _gridSpace: 0.05
   _radius: 0.5
   _ringRadius: 0.05
+  _phylloc: 0
+--- !u!114 &753234546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753234537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f4f624fe52f470bbe820bb59d0b516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boidPrefab: {fileID: 3119950666076751994, guid: 88e502343cd1a4275ab019d76f2aaa4b, type: 3}
+  leaderTransform: {fileID: 753234541}
+  _speed: 0.5
+  _distanceThreshold: 0.15
+  _noise: 0
+  _leaderMoveDistanceThreshold: 0.3
+  _distanceFromDestinationThreshold: 0.07
+  _boidFormation: 4
+  _numBoids: 50
+  _gridSize: {x: 2, y: 10}
+  _gridSpace: 0.05
+  _radius: 0.5
+  _ringRadius: 0.05
+  _phylloc: 0.2
 --- !u!1 &851010508
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,7 +2449,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2137528832
 MonoBehaviour:
   m_ObjectHideFlags: 0
