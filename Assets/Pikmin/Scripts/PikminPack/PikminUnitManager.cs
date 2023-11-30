@@ -34,6 +34,7 @@ namespace PikminPack
         // Private variables
         private PikminUnit _unitToLaunch;
         private bool _isRightIndexFingerPinching;
+        private GameObject _leaderGhost;
 
         // Component References
 
@@ -53,6 +54,16 @@ namespace PikminPack
                 pikminUnit.Init(this, Raycaster);
                 InSquadPikminUnits.Add(pikminUnit);
             }
+
+            _leaderGhost = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            // _leaderGhost.transform.position = GetNewPosition(leaderTransform, Vector3.zero);
+            _leaderGhost.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            Rigidbody ghostRb = _leaderGhost.AddComponent<Rigidbody>();
+            ghostRb.interpolation = RigidbodyInterpolation.Interpolate;
+            ghostRb.useGravity = false;
+            ghostRb.isKinematic = true;
+            Destroy(_leaderGhost.GetComponent<SphereCollider>());
+            Destroy(_leaderGhost.GetComponent<MeshRenderer>());
         }
 
         void Update()

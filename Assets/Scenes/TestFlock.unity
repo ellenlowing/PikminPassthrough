@@ -603,8 +603,10 @@ MonoBehaviour:
   boidPrefab: {fileID: 3119950666076751994, guid: 88e502343cd1a4275ab019d76f2aaa4b, type: 3}
   leaderTransform: {fileID: 753234541}
   _speed: 0.5
+  _angularSpeed: 0
   _distanceThreshold: 0.29
-  _noise: 0
+  _noiseScale: 0
+  _noiseWeight: 0
   _leaderMoveDistanceThreshold: 0.21
   _distanceFromDestinationThreshold: 0.01
   _boidFormation: 3
@@ -614,6 +616,7 @@ MonoBehaviour:
   _radius: 0
   _ringRadius: 0.05
   _phylloc: 0
+  leaderAwayFromPack: 0
 --- !u!54 &753234543
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -668,8 +671,10 @@ MonoBehaviour:
   boidPrefab: {fileID: 3119950666076751994, guid: 88e502343cd1a4275ab019d76f2aaa4b, type: 3}
   leaderTransform: {fileID: 753234541}
   _speed: 0.5
+  _angularSpeed: 0
   _distanceThreshold: 0.15
-  _noise: 0
+  _noiseScale: 0
+  _noiseWeight: 0
   _leaderMoveDistanceThreshold: 0.21
   _distanceFromDestinationThreshold: 0.01
   _boidFormation: 0
@@ -679,6 +684,7 @@ MonoBehaviour:
   _radius: 0.5
   _ringRadius: 0.05
   _phylloc: 0
+  leaderAwayFromPack: 0
 --- !u!114 &753234546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,10 +700,12 @@ MonoBehaviour:
   boidPrefab: {fileID: 3119950666076751994, guid: 88e502343cd1a4275ab019d76f2aaa4b, type: 3}
   leaderTransform: {fileID: 753234541}
   _speed: 0.5
+  _angularSpeed: 30
   _distanceThreshold: 0.15
-  _noise: 0
+  _noiseScale: 0
+  _noiseWeight: 0
   _leaderMoveDistanceThreshold: 0.3
-  _distanceFromDestinationThreshold: 0.07
+  _distanceFromDestinationThreshold: 0.0001
   _boidFormation: 4
   _numBoids: 50
   _gridSize: {x: 2, y: 10}
@@ -705,6 +713,7 @@ MonoBehaviour:
   _radius: 0.5
   _ringRadius: 0.05
   _phylloc: 0.2
+  leaderAwayFromPack: 0
 --- !u!1 &851010508
 GameObject:
   m_ObjectHideFlags: 0
