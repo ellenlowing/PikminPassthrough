@@ -67,10 +67,11 @@
     <Compile Include="Assets/Pikmin/Scripts/Prototypes/Controller/PikminControllerStateMachine/PikminIdleState.cs" />
     <Compile Include="Assets/Pikmin/Scripts/PikminPack/PikminUnit.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Misc/PlaceInFront.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/FlockBehavior.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Misc/ControlLeader.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Helper/ProjectileLibrary.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Prototypes/Controller/PikminControllerStateMachine/PikminClimbState.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/PikminLauncher.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Helper/FormationLibrary.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Misc/AddWallLayer.cs" />
     <Compile Include="Assets/Pikmin/Scripts/PikminPack/PikminUnitManager.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/Projectile/DrawProjectile.cs" />
@@ -82,12 +83,12 @@
     <Compile Include="Assets/Pikmin/Scripts/PassthroughUtils.cs" />
     <Compile Include="Assets/Pikmin/Scripts/PikminPack/Raycaster.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/Projectile/Reticle.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/Projectile/ProjectileLibrary.cs" />
     <Compile Include="Assets/Pikmin/Scripts/StateMachine/BaseState.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Prototypes/Controller/PikminControllerStateMachine/PikminStateManager.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Prototypes/Controller/PikminControllerStateMachine/PikminWalkState.cs" />
     <Compile Include="Assets/Pikmin/Scripts/StateMachine/StateManager.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/Projectile/Projectile.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Prototypes/Simulator/FormationBehavior.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Misc/TestXRI.cs" />
   </ItemGroup>
   <ItemGroup>

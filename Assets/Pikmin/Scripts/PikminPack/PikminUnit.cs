@@ -14,10 +14,12 @@ namespace PikminPack
         private Animator _animator;
         private bool _inSquad;
         private Vector3 _topJointPositionOffset;
+        private Vector3 _formationPositionOffset;
 
         [SerializeField] private Transform _topJoint;
         [SerializeField] private float _launchSpeed;
         [SerializeField] private float _inLaunchSpinSpeed;
+        [SerializeField] private float _distanceFromDestinationThreshold = 0.001f;
 
         void Start()
         {
@@ -39,6 +41,10 @@ namespace PikminPack
                     UpdateFollowLeaderState();
                     break;
 
+                case PikminState.GetInFormation:
+                    UpdateGetInFormationState();
+                    break;
+
                 case PikminState.PreLaunch:
                     UpdatePreLaunchState();
                     break;
@@ -56,10 +62,12 @@ namespace PikminPack
             }
         }
         
-        public void Init(PikminUnitManager manager, Raycaster raycaster)
+        public void Init(PikminUnitManager manager, Raycaster raycaster, Vector3 formationPositionOffset)
         {
             _manager = manager;
             _raycaster = raycaster;
+            _formationPositionOffset = formationPositionOffset;
+            transform.position = _manager.GetOffsetPositionGrounded(_manager.LeaderTransform, _formationPositionOffset);
         }
 
         public void SetState(PikminState state)
@@ -74,6 +82,10 @@ namespace PikminPack
 
                     case PikminState.FollowLeader:
                         EnterFollowLeaderState();
+                        break;
+
+                    case PikminState.GetInFormation:
+                        EnterGetInFormationState();
                         break;
 
                     case PikminState.PreLaunch:
@@ -106,6 +118,11 @@ namespace PikminPack
             _animator.CrossFade(_manager.Run, 0, 0);
         }
 
+        void EnterGetInFormationState()
+        {
+            _animator.CrossFade(_manager.Run, 0, 0);
+        }
+
         void EnterPreLaunchState()
         {
             _animator.CrossFade(_manager.Fall, 0, 0);
@@ -125,12 +142,21 @@ namespace PikminPack
 
         void UpdateIdleState()
         {
-            
+            transform.rotation = Quaternion.LookRotation(_manager.GroundedLeaderPosition - transform.position, Vector3.up);
         }
 
         void UpdateFollowLeaderState()
         {
-            
+            Vector3 newPosition = transform.position + (_manager.GroundedLeaderPosition - _manager.LastGroundedLeaderPosition);
+            transform.rotation = Quaternion.LookRotation(newPosition - transform.position, Vector3.up);
+            transform.position = newPosition;
+        }
+
+        void UpdateGetInFormationState()
+        {
+            Vector3 destination = _manager.GetOffsetPositionGrounded(_manager.LeaderGhost.transform, _formationPositionOffset);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(destination - transform.position, Vector3.up), Time.deltaTime * _manager.PikminTurnSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime * _manager.PikminWalkSpeed);
         }
 
         void UpdatePreLaunchState()
@@ -148,9 +174,26 @@ namespace PikminPack
 
         }
 
-        public bool GetInSquad()
+        public void DetermineFormationState()
         {
-            return _inSquad;
+            if(_manager.LeaderMoveEnough)
+            {
+                SetState(PikminState.FollowLeader);
+            }
+            else
+            {
+                Vector3 destination = _manager.GetOffsetPositionGrounded(_manager.LeaderGhost.transform, _formationPositionOffset);
+                bool awayFromDestination = Vector3.Distance(transform.position, destination) > _distanceFromDestinationThreshold;
+                if(awayFromDestination)
+                {
+
+                    SetState(PikminState.GetInFormation);
+                }
+                else
+                {
+                    SetState(PikminState.Idle);
+                }
+            }
         }
 
         IEnumerator ProjectileMovement(Vector3 launch, Vector3 direction, float v0, float angle, float time)

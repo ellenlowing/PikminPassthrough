@@ -758,6 +758,7 @@ MonoBehaviour:
   _topJoint: {fileID: 3119950665938379958}
   _launchSpeed: 1.2
   _inLaunchSpinSpeed: 540
+  _distanceFromDestinationThreshold: 0.00001
 --- !u!1 &3119950666131520095
 GameObject:
   m_ObjectHideFlags: 0

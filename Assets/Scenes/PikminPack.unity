@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12729266, g: 0.13414232, b: 0.12114291, a: 1}
+  m_IndirectSpecularColor: {r: 0.18107505, g: 0.2224885, b: 0.2831241, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -153,13 +153,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15573870}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.07, z: -11.51}
+  m_LocalRotation: {x: 0.15419307, y: 0, z: 0, w: 0.98804075}
+  m_LocalPosition: {x: 0, y: 3.07, z: -3.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1329233507}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 17.74, y: 0, z: 0}
 --- !u!108 &15573872
 Light:
   m_ObjectHideFlags: 0
@@ -1251,7 +1251,17 @@ MonoBehaviour:
   _rightHand: {fileID: 0}
   _rightHandRayPointer: {fileID: 1034734684}
   _debugMode: 1
+  _phylloc: 0.08
+  _leaderFromPackDistanceThreshold: 0.3
+  _leaderMoveDistanceThreshold: 0.2
   Raycaster: {fileID: 1034734688}
+  LeaderGhost: {fileID: 0}
+  LeaderTransform: {fileID: 1034734684}
+  LastGroundedLeaderPosition: {x: 0, y: 0, z: 0}
+  GroundedLeaderPosition: {x: 0, y: 0, z: 0}
+  LeaderMoveEnough: 0
+  PikminWalkSpeed: 0.5
+  PikminTurnSpeed: 360
 --- !u!1001 &1012828379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1342,7 +1352,7 @@ GameObject:
   - component: {fileID: 1034734688}
   - component: {fileID: 1034734690}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2235,7 +2245,17 @@ MonoBehaviour:
   _rightHand: {fileID: 1644676312}
   _rightHandRayPointer: {fileID: 855605867}
   _debugMode: 0
+  _phylloc: 0
+  _leaderFromPackDistanceThreshold: 0
+  _leaderMoveDistanceThreshold: 0
   Raycaster: {fileID: 91281170}
+  LeaderGhost: {fileID: 0}
+  LeaderTransform: {fileID: 0}
+  LastGroundedLeaderPosition: {x: 0, y: 0, z: 0}
+  GroundedLeaderPosition: {x: 0, y: 0, z: 0}
+  LeaderMoveEnough: 0
+  PikminWalkSpeed: 0
+  PikminTurnSpeed: 0
 --- !u!1001 &1831760570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2531,15 +2551,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7885568406746985251, guid: d375323cbb5cc431db0dde8e93530631, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7885568406746985251, guid: d375323cbb5cc431db0dde8e93530631, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7885568406746985251, guid: d375323cbb5cc431db0dde8e93530631, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7885568406746985251, guid: d375323cbb5cc431db0dde8e93530631, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2547,7 +2567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7885568406746985251, guid: d375323cbb5cc431db0dde8e93530631, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 4.9
       objectReference: {fileID: 0}
     - target: {fileID: 7885568406746985251, guid: d375323cbb5cc431db0dde8e93530631, type: 3}
       propertyPath: m_LocalPosition.z

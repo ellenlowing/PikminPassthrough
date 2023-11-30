@@ -20,7 +20,7 @@ public class Boid
     }
 }
 
-public class FlockBehavior : MonoBehaviour
+public class FormationBehavior : MonoBehaviour
 {
     public enum BoidFormation
     {
@@ -136,6 +136,7 @@ public class FlockBehavior : MonoBehaviour
             
             if(groundedLeaderMoveDistance > _leaderMoveDistanceThreshold)
             {
+                // Follow leader
                 boid.anim.SetInteger("state", 1);
                 Vector3 newPosition = boidTransform.position + (leaderTransform.position - lastLeaderPosition);
                 boidTransform.rotation = Quaternion.LookRotation(newPosition - boidTransform.position, Vector3.up);
@@ -148,19 +149,20 @@ public class FlockBehavior : MonoBehaviour
 
                 if(distanceFromDestination > _distanceFromDestinationThreshold)
                 {
+                    // Get in formation
                     boid.anim.SetInteger("state", 1);
                     boidTransform.rotation = Quaternion.LookRotation(newPosition - boidTransform.position, Vector3.up);
                     boidTransform.position = Vector3.MoveTowards(boidTransform.position, newPosition, step);
                 }
                 else
                 {
+                    // Idle
                     boid.anim.SetInteger("state", 0);
                     boidTransform.rotation = Quaternion.LookRotation(groundedLeaderPosition - boidTransform.position, Vector3.up);
                 }
             }
 
         }
-
 
         lastLeaderPosition = leaderTransform.position;
     }
