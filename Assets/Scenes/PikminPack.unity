@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18107505, g: 0.2224885, b: 0.2831241, a: 1}
+  m_IndirectSpecularColor: {r: 0.18018535, g: 0.22559482, b: 0.30677685, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -492,6 +492,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 310689757}
     m_Modifications:
+    - target: {fileID: 15374482166302223, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 65207973030035947, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
       propertyPath: m_Name
       value: OVRHands
@@ -1247,19 +1251,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pikminPrefab: {fileID: 2922501334484497407, guid: fd1ec5e53346a4cb9a83a5f9e6aab12d, type: 3}
-  _pikminUnitAmount: 20
+  _pikminUnitAmount: 30
   _rightHand: {fileID: 0}
   _rightHandRayPointer: {fileID: 1034734684}
   _debugMode: 1
   _phylloc: 0.08
-  _leaderFromPackDistanceThreshold: 0.3
-  _leaderMoveDistanceThreshold: 0.2
+  _leaderFromPackDistanceThreshold: 0.5
+  _leaderMoveDistanceThreshold: 0.3
   Raycaster: {fileID: 1034734688}
   LeaderGhost: {fileID: 0}
   LeaderTransform: {fileID: 1034734684}
-  LastGroundedLeaderPosition: {x: 0, y: 0, z: 0}
-  GroundedLeaderPosition: {x: 0, y: 0, z: 0}
+  LastGroundedLeaderPosition: {x: 1.430936, y: 0, z: -1.2373059}
+  GroundedLeaderPosition: {x: 1.430936, y: 0, z: -1.2373059}
   LeaderMoveEnough: 0
+  LeaderAwayFromPack: 0
+  LeaderGhostMoveDifference: {x: 0.4432478, y: 0, z: -0.23377776}
   PikminWalkSpeed: 0.5
   PikminTurnSpeed: 360
 --- !u!1001 &1012828379
@@ -1673,6 +1679,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1704824571}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1134526119 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400002, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+  m_PrefabInstance: {fileID: 251771332}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1136880685 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11400010, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
@@ -1699,7 +1710,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1329233507
 Transform:
   m_ObjectHideFlags: 0
@@ -2172,7 +2183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1704824571
 Transform:
   m_ObjectHideFlags: 0
@@ -2241,21 +2252,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pikminPrefab: {fileID: 6054552585659597304, guid: 5fac27b8363ec4842b58ab458c348db6, type: 3}
-  _pikminUnitAmount: 1
+  _pikminUnitAmount: 30
   _rightHand: {fileID: 1644676312}
   _rightHandRayPointer: {fileID: 855605867}
   _debugMode: 0
-  _phylloc: 0
-  _leaderFromPackDistanceThreshold: 0
-  _leaderMoveDistanceThreshold: 0
+  _phylloc: 0.08
+  _leaderFromPackDistanceThreshold: 0.5
+  _leaderMoveDistanceThreshold: 0.01
   Raycaster: {fileID: 91281170}
   LeaderGhost: {fileID: 0}
-  LeaderTransform: {fileID: 0}
+  LeaderTransform: {fileID: 1134526119}
   LastGroundedLeaderPosition: {x: 0, y: 0, z: 0}
   GroundedLeaderPosition: {x: 0, y: 0, z: 0}
   LeaderMoveEnough: 0
-  PikminWalkSpeed: 0
-  PikminTurnSpeed: 0
+  LeaderAwayFromPack: 0
+  LeaderGhostMoveDifference: {x: 0, y: 0, z: 0}
+  PikminWalkSpeed: 1.2
+  PikminTurnSpeed: 120
 --- !u!1001 &1831760570
 PrefabInstance:
   m_ObjectHideFlags: 0

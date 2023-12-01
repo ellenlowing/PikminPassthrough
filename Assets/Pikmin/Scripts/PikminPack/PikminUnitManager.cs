@@ -46,11 +46,13 @@ namespace PikminPack
         public List<PikminUnit> InSquadPikminUnits { get; private set; } = new List<PikminUnit>();
         public List<PikminUnit> WildPikminUnits { get; private set; } = new List<PikminUnit>();
         public Raycaster Raycaster;
-        public GameObject LeaderGhost;
+        [HideInInspector] public GameObject LeaderGhost;
         public Transform LeaderTransform;
-        public Vector3 LastGroundedLeaderPosition;
-        public Vector3 GroundedLeaderPosition;
+        [HideInInspector] public Vector3 LastGroundedLeaderPosition;
+        [HideInInspector] public Vector3 GroundedLeaderPosition;
         public bool LeaderMoveEnough;
+        public bool LeaderAwayFromPack;
+        [HideInInspector] public Vector3 LeaderGhostMoveDifference;
         public float PikminWalkSpeed;
         public float PikminTurnSpeed;
         
@@ -82,6 +84,10 @@ namespace PikminPack
             ghostRb.isKinematic = true;
             Destroy(LeaderGhost.GetComponent<SphereCollider>());
             // Destroy(LeaderGhost.GetComponent<MeshRenderer>());
+
+            LeaderMoveEnough = false;
+            GroundedLeaderPosition = new Vector3(LeaderTransform.position.x, 0, LeaderTransform.position.z);
+            LastGroundedLeaderPosition = GroundedLeaderPosition;
         }
 
         void Update()
@@ -125,18 +131,21 @@ namespace PikminPack
             float step = Time.deltaTime * PikminWalkSpeed;
             float angularStep = Time.deltaTime * PikminTurnSpeed;
             GroundedLeaderPosition = new Vector3(LeaderTransform.position.x, 0, LeaderTransform.position.z);
-            bool leaderAwayFromPack = Vector3.Distance(LeaderGhost.transform.position, GroundedLeaderPosition) > _leaderFromPackDistanceThreshold;
+            LeaderAwayFromPack = Vector3.Distance(LeaderGhost.transform.position, GroundedLeaderPosition) > _leaderFromPackDistanceThreshold;
             LeaderMoveEnough = Vector3.Distance(GroundedLeaderPosition, new Vector3(LastGroundedLeaderPosition.x, 0, LastGroundedLeaderPosition.z)) > _leaderMoveDistanceThreshold;
 
-            if(leaderAwayFromPack)
+            if(LeaderAwayFromPack)
             {
                 Vector3 newGhostPosition = GetOffsetPositionGrounded(LeaderTransform, Vector3.zero);
+                LeaderGhostMoveDifference = newGhostPosition - LeaderGhost.transform.position;
                 LeaderGhost.transform.position = Vector3.MoveTowards(LeaderGhost.transform.position, newGhostPosition, step);
                 
-                Quaternion leaderYRotation = Quaternion.identity;
-                leaderYRotation.eulerAngles = new Vector3(0, LeaderTransform.rotation.eulerAngles.y, 0);
-                LeaderGhost.transform.rotation = Quaternion.RotateTowards(LeaderGhost.transform.rotation, leaderYRotation, angularStep);
-            }
+                // Quaternion leaderYRotation = Quaternion.identity;
+                // leaderYRotation.eulerAngles = new Vector3(0, LeaderTransform.rotation.eulerAngles.y, 0);
+                // LeaderGhost.transform.rotation = Quaternion.RotateTowards(LeaderGhost.transform.rotation, leaderYRotation, angularStep);
+            } 
+
+            Debug.Log("LeaderMoveEnough " + Vector3.Distance(GroundedLeaderPosition, new Vector3(LastGroundedLeaderPosition.x, 0, LastGroundedLeaderPosition.z)));
 
             foreach(PikminUnit unit in InSquadPikminUnits)
             {
@@ -150,12 +159,12 @@ namespace PikminPack
         {
             if(InSquadPikminUnits.Count > 0)
             {
-                _unitToLaunch = InSquadPikminUnits[0];
+                _unitToLaunch = InSquadPikminUnits[InSquadPikminUnits.Count-1];
             }
 
-            if(_unitToLaunch != null && _unitToLaunch.TryGetComponent<PikminUnit>(out PikminUnit unit))
+            if(_unitToLaunch != null)
             {
-                unit.SetState(PikminState.PreLaunch);
+                _unitToLaunch.SetState(PikminState.PreLaunch);
                 Raycaster.Prelaunch = true;
             }
         }

@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: _inLaunchSpinSpeed
       value: 540
       objectReference: {fileID: 0}
+    - target: {fileID: 2922501334484497407, guid: fd1ec5e53346a4cb9a83a5f9e6aab12d, type: 3}
+      propertyPath: _distanceFromDestinationThreshold
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 3119950665140160247, guid: fd1ec5e53346a4cb9a83a5f9e6aab12d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

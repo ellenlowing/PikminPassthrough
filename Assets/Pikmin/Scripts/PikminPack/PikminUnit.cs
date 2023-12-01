@@ -15,6 +15,7 @@ namespace PikminPack
         private bool _inSquad;
         private Vector3 _topJointPositionOffset;
         private Vector3 _formationPositionOffset;
+        private IEnumerator _getInFormationCoroutine;
 
         [SerializeField] private Transform _topJoint;
         [SerializeField] private float _launchSpeed;
@@ -116,11 +117,17 @@ namespace PikminPack
         void EnterFollowLeaderState()
         {
             _animator.CrossFade(_manager.Run, 0, 0);
+            if(_getInFormationCoroutine != null) StopCoroutine(_getInFormationCoroutine);
+            _getInFormationCoroutine = null;
         }
 
         void EnterGetInFormationState()
         {
             _animator.CrossFade(_manager.Run, 0, 0);
+            // Vector3 destination = _manager.GetOffsetPositionGrounded(_manager.LeaderGhost.transform, _formationPositionOffset);
+            _getInFormationCoroutine = GetInFormationMovement();
+            Debug.Log("start get in formation");
+            StartCoroutine(_getInFormationCoroutine);
         }
 
         void EnterPreLaunchState()
@@ -147,16 +154,13 @@ namespace PikminPack
 
         void UpdateFollowLeaderState()
         {
-            Vector3 newPosition = transform.position + (_manager.GroundedLeaderPosition - _manager.LastGroundedLeaderPosition);
-            transform.rotation = Quaternion.LookRotation(newPosition - transform.position, Vector3.up);
-            transform.position = newPosition;
+            Vector3 newPosition = transform.position + _manager.LeaderGhostMoveDifference; 
+            transform.rotation = Quaternion.LookRotation(_manager.LeaderGhostMoveDifference, Vector3.up);
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, Time.deltaTime * _manager.PikminWalkSpeed);
         }
 
         void UpdateGetInFormationState()
         {
-            Vector3 destination = _manager.GetOffsetPositionGrounded(_manager.LeaderGhost.transform, _formationPositionOffset);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(destination - transform.position, Vector3.up), Time.deltaTime * _manager.PikminTurnSpeed);
-            transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime * _manager.PikminWalkSpeed);
         }
 
         void UpdatePreLaunchState()
@@ -176,24 +180,50 @@ namespace PikminPack
 
         public void DetermineFormationState()
         {
-            if(_manager.LeaderMoveEnough)
+            if(CurrentState != PikminState.FollowLeader)
             {
-                SetState(PikminState.FollowLeader);
+                if(_manager.LeaderAwayFromPack && _manager.LeaderMoveEnough)
+                {
+                    SetState(PikminState.FollowLeader);
+                }
             }
             else
             {
-                Vector3 destination = _manager.GetOffsetPositionGrounded(_manager.LeaderGhost.transform, _formationPositionOffset);
-                bool awayFromDestination = Vector3.Distance(transform.position, destination) > _distanceFromDestinationThreshold;
-                if(awayFromDestination)
+                if(!_manager.LeaderAwayFromPack)
                 {
+                    Vector3 destination = _manager.GetOffsetPositionGrounded(_manager.LeaderGhost.transform, _formationPositionOffset);
+                    bool awayFromDestination = Vector3.Distance(transform.position, destination) > _distanceFromDestinationThreshold;
+                    if(awayFromDestination)
+                    {
 
-                    SetState(PikminState.GetInFormation);
-                }
-                else
-                {
-                    SetState(PikminState.Idle);
+                        SetState(PikminState.GetInFormation);
+                    }
+                    else
+                    {
+                        SetState(PikminState.Idle);
+                    }
                 }
             }
+            
+        }
+
+        // Add coroutine for get in formation movement to avoid glitching when the pikmin almost arrives at destination
+        IEnumerator GetInFormationMovement()
+        {
+            float distanceFromDestination = 9999f;
+            while(distanceFromDestination > _distanceFromDestinationThreshold)
+            {
+                Vector3 destination = _manager.GetOffsetPositionGrounded(_manager.LeaderGhost.transform, _formationPositionOffset);
+                Vector3 newPosition = Vector3.MoveTowards(transform.position, destination, Time.deltaTime * _manager.PikminWalkSpeed);
+                transform.rotation = Quaternion.LookRotation(newPosition - transform.position, Vector3.up);
+                transform.position = newPosition;
+
+                distanceFromDestination = Vector3.Distance(transform.position, destination);
+                // Debug.Log(distanceFromDestination);
+
+                yield return null;
+            }
+            SetState(PikminState.Idle);
         }
 
         IEnumerator ProjectileMovement(Vector3 launch, Vector3 direction, float v0, float angle, float time)

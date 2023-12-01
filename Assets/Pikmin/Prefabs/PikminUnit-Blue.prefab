@@ -739,7 +739,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &2922501334484497407
@@ -758,7 +758,7 @@ MonoBehaviour:
   _topJoint: {fileID: 3119950665938379958}
   _launchSpeed: 1.2
   _inLaunchSpinSpeed: 540
-  _distanceFromDestinationThreshold: 0.00001
+  _distanceFromDestinationThreshold: 0.01
 --- !u!1 &3119950666131520095
 GameObject:
   m_ObjectHideFlags: 0
