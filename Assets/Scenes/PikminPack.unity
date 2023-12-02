@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18107505, g: 0.2224885, b: 0.2831241, a: 1}
+  m_IndirectSpecularColor: {r: 0.18018535, g: 0.22559482, b: 0.30677685, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -295,7 +295,7 @@ MonoBehaviour:
   _bevel: 0
   _renderQueue: 3006
   _renderOffset: {x: 0, y: 0}
-  _radius: 0.005
+  _radius: 0.01
   _gradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 0}
@@ -315,7 +315,7 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 16384
+    atime1: 193
     atime2: 65535
     atime3: 65535
     atime4: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_ColorSpace: -1
+    m_ColorSpace: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 3
   _tint: {r: 0, g: 0.0802474, b: 1, a: 1}
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc0f648ee55642c2b81186555aea0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prelaunch: 0
+  State: 0
   V0: 0
   LaunchDuration: 0
   LaunchAngle: 0
@@ -436,6 +436,8 @@ MonoBehaviour:
   GroundDirectionNorm: {x: 0, y: 0, z: 0}
   LaunchPosition: {x: 0, y: 0, z: 0}
   _tubeRenderer: {fileID: 87384185}
+  _tubeTrailLength: 2
+  _tubeTrailStep: 0.06
   PointerPose:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
@@ -1331,7 +1333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pikminPrefab: {fileID: 2922501334484497407, guid: fd1ec5e53346a4cb9a83a5f9e6aab12d, type: 3}
-  _pikminUnitAmount: 30
+  _pikminUnitAmount: 60
   _rightHand: {fileID: 0}
   _rightHandRayPointer: {fileID: 1034734684}
   _debugMode: 1
@@ -1544,7 +1546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc0f648ee55642c2b81186555aea0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prelaunch: 0
+  State: 0
   V0: 0
   LaunchDuration: 0
   LaunchAngle: 0
@@ -1552,6 +1554,8 @@ MonoBehaviour:
   GroundDirectionNorm: {x: 0, y: 0, z: 0}
   LaunchPosition: {x: 0, y: 0, z: 0}
   _tubeRenderer: {fileID: 1837227655}
+  _tubeTrailLength: 2
+  _tubeTrailStep: 0.06
   PointerPose:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
@@ -1794,7 +1798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1329233507
 Transform:
   m_ObjectHideFlags: 0
@@ -1869,7 +1873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc0f648ee55642c2b81186555aea0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prelaunch: 0
+  State: 0
   V0: 0
   LaunchDuration: 0
   LaunchAngle: 0
@@ -1877,6 +1881,8 @@ MonoBehaviour:
   GroundDirectionNorm: {x: 0, y: 0, z: 0}
   LaunchPosition: {x: 0, y: 0, z: 0}
   _tubeRenderer: {fileID: 0}
+  _tubeTrailLength: 2
+  _tubeTrailStep: 0.01
   PointerPose:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
@@ -2284,7 +2290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1704824571
 Transform:
   m_ObjectHideFlags: 0
@@ -2520,7 +2526,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 3
   _tint: {r: 0.2660625, g: 1, b: 0, a: 1}
-  _progressFade: 0.2
+  _progressFade: 1
   _startFadeThresold: 0.3
   _endFadeThresold: 1
   _invertThreshold: 0

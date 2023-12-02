@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace PikminPack
 {
-
     public class PikminUnit : MonoBehaviour
     {
         public PikminState CurrentState; // {private set; get;}
@@ -241,6 +240,7 @@ namespace PikminPack
         
         void HandleLanding()
         {
+            _raycaster.State = RaycastState.Idle;
             RaycastHit hit = _raycaster.RaycastHit;
             if(hit.collider.CompareTag("Floor"))
             {
