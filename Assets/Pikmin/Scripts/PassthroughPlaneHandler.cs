@@ -32,6 +32,7 @@ public class PassthroughPlaneHandler : MonoBehaviour
                 gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Floor");
                 gameObject.tag = "Floor";
                 gameObject.transform.GetChild(0).tag = "Floor";
+                Debug.Log("Found Floor");
             }
             else if (_classification.Contains(OVRSceneManager.Classification.Ceiling))
             {
@@ -42,6 +43,7 @@ public class PassthroughPlaneHandler : MonoBehaviour
                 gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Wall");
                 gameObject.tag = "Wall";
                 gameObject.transform.GetChild(0).tag = "Wall";
+                Debug.Log("Found wall");
 
             }
         }

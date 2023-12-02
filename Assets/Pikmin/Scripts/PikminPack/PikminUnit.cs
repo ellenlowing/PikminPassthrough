@@ -126,7 +126,6 @@ namespace PikminPack
             _animator.CrossFade(_manager.Run, 0, 0);
             // Vector3 destination = _manager.GetOffsetPositionGrounded(_manager.LeaderGhost.transform, _formationPositionOffset);
             _getInFormationCoroutine = GetInFormationMovement();
-            Debug.Log("start get in formation");
             StartCoroutine(_getInFormationCoroutine);
         }
 
@@ -207,7 +206,6 @@ namespace PikminPack
             
         }
 
-        // Add coroutine for get in formation movement to avoid glitching when the pikmin almost arrives at destination
         IEnumerator GetInFormationMovement()
         {
             float distanceFromDestination = 9999f;
@@ -219,7 +217,6 @@ namespace PikminPack
                 transform.position = newPosition;
 
                 distanceFromDestination = Vector3.Distance(transform.position, destination);
-                // Debug.Log(distanceFromDestination);
 
                 yield return null;
             }

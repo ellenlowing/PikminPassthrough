@@ -83,7 +83,7 @@ namespace PikminPack
             ghostRb.useGravity = false;
             ghostRb.isKinematic = true;
             Destroy(LeaderGhost.GetComponent<SphereCollider>());
-            // Destroy(LeaderGhost.GetComponent<MeshRenderer>());
+            Destroy(LeaderGhost.GetComponent<MeshRenderer>());
 
             LeaderMoveEnough = false;
             GroundedLeaderPosition = new Vector3(LeaderTransform.position.x, 0, LeaderTransform.position.z);
@@ -97,7 +97,7 @@ namespace PikminPack
             {
                 if(_rightHand.IsTracked)
                 {
-                    Raycaster.transform.SetPositionAndRotation(_rightHandRayPointer.position, _rightHandRayPointer.rotation);
+                    Raycaster.PointerPose = new Pose(_rightHandRayPointer.position, _rightHandRayPointer.rotation);
 
                     // Check pinching status
                     _isRightIndexFingerPinching = _rightHand.GetFingerIsPinching(OVRHand.HandFinger.Index);
@@ -145,8 +145,6 @@ namespace PikminPack
                 // LeaderGhost.transform.rotation = Quaternion.RotateTowards(LeaderGhost.transform.rotation, leaderYRotation, angularStep);
             } 
 
-            Debug.Log("LeaderMoveEnough " + Vector3.Distance(GroundedLeaderPosition, new Vector3(LastGroundedLeaderPosition.x, 0, LastGroundedLeaderPosition.z)));
-
             foreach(PikminUnit unit in InSquadPikminUnits)
             {
                 unit.DetermineFormationState();
@@ -182,7 +180,6 @@ namespace PikminPack
         {
             Vector3 newOffset = refTransform.forward * positionOffset.z + refTransform.right * positionOffset.x;
             Vector3 newPosition = refTransform.position + newOffset;
-            // newPosition += newOffset * (_radius - 1f);
             newPosition.y = 0;
             return newPosition;
         }
