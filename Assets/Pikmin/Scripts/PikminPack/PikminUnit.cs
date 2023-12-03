@@ -240,7 +240,7 @@ namespace PikminPack
         
         void HandleLanding()
         {
-            _raycaster.State = RaycastState.Idle;
+            _raycaster.SetState(RaycastState.Idle);
             RaycastHit hit = _raycaster.RaycastHit;
             if(hit.collider.CompareTag("Floor"))
             {

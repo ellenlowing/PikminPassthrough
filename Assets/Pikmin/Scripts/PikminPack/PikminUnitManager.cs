@@ -163,7 +163,7 @@ namespace PikminPack
             if(_unitToLaunch != null)
             {
                 _unitToLaunch.SetState(PikminState.PreLaunch);
-                Raycaster.State = RaycastState.Prelaunch;
+                Raycaster.SetState(RaycastState.PreLaunch);
             }
         }
 
@@ -173,8 +173,7 @@ namespace PikminPack
             InSquadPikminUnits.Remove(unit);
             WildPikminUnits.Add(unit);
             _unitToLaunch = null;
-            Raycaster.State = RaycastState.Inlaunch;
-            StartCoroutine(Raycaster.InLaunchProjectileTrail()); // maybe move to raycaster singleton
+            Raycaster.SetState(RaycastState.InLaunch);
         }
 
         public Vector3 GetOffsetPositionGrounded(Transform refTransform, Vector3 positionOffset)

@@ -8,13 +8,13 @@ namespace PikminPack
     public enum RaycastState
     {
         Idle,
-        Prelaunch,
-        Inlaunch
+        PreLaunch,
+        InLaunch
     }
 
     public class Raycaster : MonoBehaviour
     {
-        [HideInInspector] public RaycastState State = RaycastState.Idle;
+        [HideInInspector] public RaycastState CurrentState = RaycastState.Idle;
         [HideInInspector] public float V0;
         [HideInInspector] public float LaunchDuration;
         [HideInInspector] public float LaunchAngle;
@@ -22,41 +22,97 @@ namespace PikminPack
         [HideInInspector] public Vector3 GroundDirectionNorm;
         [HideInInspector] public Vector3 LaunchPosition;
         [HideInInspector] public RaycastHit RaycastHit;
+        [HideInInspector] public Pose PointerPose;
 
         [SerializeField] private TubeRenderer _tubeRenderer;
         [SerializeField] private float _tubeTrailLength = 2f;
         [SerializeField] private float _tubeTrailStep = 0.01f;
+        [SerializeField] private Gradient _prelaunchGradient;
+        [SerializeField] private Gradient _inlaunchGradient;
         private TubePoint [] _arcPoints;
 
-        public Pose PointerPose;
 
         void Start()
         {
-            State = RaycastState.Idle;
+            CurrentState = RaycastState.Idle;
         }
 
         void Update()
         {
             transform.SetPositionAndRotation(PointerPose.position, PointerPose.rotation);
 
-            switch(State)
+            switch(CurrentState)
             {
                 case RaycastState.Idle:
-                    _tubeRenderer.Hide();
+                    UpdateIdleState();
                     break;
                 
-                case RaycastState.Prelaunch:
-                    GetRaycastHit();
-                    LaunchPosition = transform.position;
-                    ProjectileLibrary.CalculatePathFromLaunchToTarget(RaycastHit.point, LaunchPosition, out GroundDirectionNorm, out LaunchHeight, out V0, out LaunchDuration, out LaunchAngle);
-                    Vector3 [] projectilePositions = ProjectileLibrary.GetProjectilePositions(LaunchPosition, GroundDirectionNorm, V0, LaunchDuration, LaunchAngle);
-                    DrawProjectile(projectilePositions);
+                case RaycastState.PreLaunch:
+                    UpdatePreLaunchState();
                     break;
 
-                case RaycastState.Inlaunch:
-                
+                case RaycastState.InLaunch:
+                    UpdateInLaunchState();
                     break;
             }            
+        }
+
+        public void SetState(RaycastState state)
+        {
+            if(state != CurrentState)
+            {
+                switch(state)
+                {
+                    case RaycastState.Idle:
+                        EnterIdleState();
+                        break;
+
+                    case RaycastState.PreLaunch:
+                        EnterPreLaunchState();
+                        break;
+
+                    case RaycastState.InLaunch:
+                        EnterInLaunchState();
+                        break;
+                }
+
+                CurrentState = state;
+            }
+        }
+
+        private void EnterIdleState()
+        {
+            _tubeRenderer.Hide();
+        }
+
+        private void EnterPreLaunchState()
+        {
+            _tubeRenderer.Gradient = _prelaunchGradient;
+        } 
+
+        private void EnterInLaunchState()
+        {
+            _tubeRenderer.Gradient = _inlaunchGradient;
+            StartCoroutine(InLaunchProjectileTrail());
+        }
+
+        private void UpdateIdleState()
+        {
+
+        }
+
+        private void UpdatePreLaunchState()
+        {
+            GetRaycastHit();
+            LaunchPosition = transform.position;
+            ProjectileLibrary.CalculatePathFromLaunchToTarget(RaycastHit.point, LaunchPosition, out GroundDirectionNorm, out LaunchHeight, out V0, out LaunchDuration, out LaunchAngle);
+            Vector3 [] projectilePositions = ProjectileLibrary.GetProjectilePositions(LaunchPosition, GroundDirectionNorm, V0, LaunchDuration, LaunchAngle);
+            DrawProjectile(projectilePositions);
+        }
+
+        private void UpdateInLaunchState()
+        {
+
         }
 
         public void GetRaycastHit()
