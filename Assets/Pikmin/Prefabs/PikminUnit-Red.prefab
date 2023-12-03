@@ -95,11 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3943a198b2fd1442e99e581ad2b1d5d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentState: 0
   _topJoint: {fileID: 9027475113154351788}
   _launchSpeed: 1.2
   _inLaunchSpinSpeed: 540
   _distanceFromDestinationThreshold: 0.01
+  _raycasterTint: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &8837832547935737941
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ namespace PikminPack
 {
     public class PikminUnit : MonoBehaviour
     {
-        public PikminState CurrentState; // {private set; get;}
+        public PikminState CurrentState {private set; get;}
         private PikminUnitManager _manager;
         private Raycaster _raycaster;
         private Animator _animator;
@@ -20,6 +20,7 @@ namespace PikminPack
         [SerializeField] private float _launchSpeed;
         [SerializeField] private float _inLaunchSpinSpeed;
         [SerializeField] private float _distanceFromDestinationThreshold = 0.001f;
+        [SerializeField] private Color _raycasterTint;
 
         void Start()
         {
@@ -130,6 +131,7 @@ namespace PikminPack
         void EnterPreLaunchState()
         {
             _animator.CrossFade(_manager.Fall, 0, 0);
+            _raycaster.RaycasterTint = _raycasterTint;
         }
 
         void EnterInLaunchState()

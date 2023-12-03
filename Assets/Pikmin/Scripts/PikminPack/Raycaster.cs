@@ -22,7 +22,8 @@ namespace PikminPack
         [HideInInspector] public Vector3 GroundDirectionNorm;
         [HideInInspector] public Vector3 LaunchPosition;
         [HideInInspector] public RaycastHit RaycastHit;
-        public Pose PointerPose;
+        [HideInInspector] public Pose PointerPose;
+        public Color RaycasterTint;
 
         [SerializeField] private TubeRenderer _tubeRenderer;
         [SerializeField] private float _tubeTrailLength = 2f;
@@ -88,6 +89,7 @@ namespace PikminPack
         private void EnterPreLaunchState()
         {
             _tubeRenderer.Gradient = _prelaunchGradient;
+            _tubeRenderer.Tint = RaycasterTint;
         } 
 
         private void EnterInLaunchState()
