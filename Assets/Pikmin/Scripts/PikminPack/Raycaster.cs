@@ -36,6 +36,7 @@ namespace PikminPack
         void Start()
         {
             CurrentState = RaycastState.Idle;
+            PointerPose = new Pose(transform.position, transform.rotation);
         }
 
         void Update()

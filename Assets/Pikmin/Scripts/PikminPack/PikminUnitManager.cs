@@ -71,29 +71,7 @@ namespace PikminPack
         
         void Start()
         {   
-            int pikminUnitCount = 0;
-            for(int i = 0; i < _bluePikminUnitAmount; i++)
-            {
-                var pikminUnit = Instantiate(_bluePikminPrefab);
-                pikminUnit.Init(this, Raycaster, GetFormationPositionOffset(pikminUnitCount));
-                InSquadPikminUnits.Add(pikminUnit);
-                pikminUnitCount++;
-            }
-            for(int i = 0; i < _redPikminUnitAmount; i++)
-            {
-                var pikminUnit = Instantiate(_redPikminPrefab);
-                pikminUnit.Init(this, Raycaster, GetFormationPositionOffset(pikminUnitCount));
-                InSquadPikminUnits.Add(pikminUnit);
-                pikminUnitCount++;
-            }
-            for(int i = 0; i < _yellowPikminUnitAmount; i++)
-            {
-                var pikminUnit = Instantiate(_yellowPikminPrefab);
-                pikminUnit.Init(this, Raycaster, GetFormationPositionOffset(pikminUnitCount));
-                InSquadPikminUnits.Add(pikminUnit);
-                pikminUnitCount++;
-            }
-
+            
             LeaderGhost = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             LeaderGhost.transform.position = GetOffsetPositionGrounded(LeaderTransform, Vector3.zero);
             LeaderGhost.transform.rotation = LeaderTransform.rotation;
@@ -108,6 +86,33 @@ namespace PikminPack
             LeaderMoveEnough = false;
             GroundedLeaderPosition = new Vector3(LeaderTransform.position.x, 0, LeaderTransform.position.z);
             LastGroundedLeaderPosition = GroundedLeaderPosition;
+            
+            int pikminUnitCount = 0;
+            for(int i = 0; i < _bluePikminUnitAmount; i++)
+            {
+                Vector3 formationPositionOffset = GetFormationPositionOffset(pikminUnitCount);
+                var pikminUnit = Instantiate(_bluePikminPrefab, GetOffsetPositionGrounded(LeaderTransform, formationPositionOffset), Quaternion.identity);
+                pikminUnit.Init(this, Raycaster, formationPositionOffset);
+                InSquadPikminUnits.Add(pikminUnit);
+                pikminUnitCount++;
+            }
+            for(int i = 0; i < _redPikminUnitAmount; i++)
+            {
+                Vector3 formationPositionOffset = GetFormationPositionOffset(pikminUnitCount);
+                var pikminUnit = Instantiate(_redPikminPrefab, GetOffsetPositionGrounded(LeaderTransform, formationPositionOffset), Quaternion.identity);
+                pikminUnit.Init(this, Raycaster, formationPositionOffset);
+                InSquadPikminUnits.Add(pikminUnit);
+                pikminUnitCount++;
+            }
+            for(int i = 0; i < _yellowPikminUnitAmount; i++)
+            {
+                Vector3 formationPositionOffset = GetFormationPositionOffset(pikminUnitCount);
+                var pikminUnit = Instantiate(_yellowPikminPrefab, GetOffsetPositionGrounded(LeaderTransform, formationPositionOffset), Quaternion.identity);
+                pikminUnit.Init(this, Raycaster, formationPositionOffset);
+                InSquadPikminUnits.Add(pikminUnit);
+                pikminUnitCount++;
+            }
+
         }
 
         void Update()

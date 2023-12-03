@@ -7,7 +7,7 @@ namespace PikminPack
 {
     public class PikminUnit : MonoBehaviour
     {
-        public PikminState CurrentState {private set; get;}
+        public PikminState CurrentState = PikminState.Idle;
         private PikminUnitManager _manager;
         private Raycaster _raycaster;
         private Animator _animator;
@@ -26,7 +26,6 @@ namespace PikminPack
         {
             _animator = GetComponent<Animator>();
             _inSquad = true;
-            CurrentState = PikminState.Idle;
             _topJointPositionOffset = _topJoint.position;
         }
 
@@ -68,7 +67,6 @@ namespace PikminPack
             _manager = manager;
             _raycaster = raycaster;
             _formationPositionOffset = formationPositionOffset;
-            transform.position = _manager.GetOffsetPositionGrounded(_manager.LeaderTransform, _formationPositionOffset);
         }
 
         public void SetState(PikminState state)

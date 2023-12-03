@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3943a198b2fd1442e99e581ad2b1d5d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentState: 0
   _topJoint: {fileID: 9027475113154351788}
   _launchSpeed: 1.2
   _inLaunchSpinSpeed: 540
