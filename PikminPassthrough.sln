@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator", "Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj", "{A3259D55-9151-EBE3-6D2A-2894A28690DC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{C94158D7-F20B-0D2D-0540-2F8C16B8EEA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator", "Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj", "{A3259D55-9151-EBE3-6D2A-2894A28690DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor", "Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj", "{C6E63CAF-019B-7921-141E-4D065147592E}"
 EndProject
@@ -15,14 +15,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A3259D55-9151-EBE3-6D2A-2894A28690DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3259D55-9151-EBE3-6D2A-2894A28690DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3259D55-9151-EBE3-6D2A-2894A28690DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3259D55-9151-EBE3-6D2A-2894A28690DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C94158D7-F20B-0D2D-0540-2F8C16B8EEA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C94158D7-F20B-0D2D-0540-2F8C16B8EEA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C94158D7-F20B-0D2D-0540-2F8C16B8EEA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C94158D7-F20B-0D2D-0540-2F8C16B8EEA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3259D55-9151-EBE3-6D2A-2894A28690DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3259D55-9151-EBE3-6D2A-2894A28690DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3259D55-9151-EBE3-6D2A-2894A28690DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3259D55-9151-EBE3-6D2A-2894A28690DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C6E63CAF-019B-7921-141E-4D065147592E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C6E63CAF-019B-7921-141E-4D065147592E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6E63CAF-019B-7921-141E-4D065147592E}.Release|Any CPU.ActiveCfg = Release|Any CPU

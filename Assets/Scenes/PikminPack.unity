@@ -331,7 +331,7 @@ MonoBehaviour:
   _startFadeThresold: 0
   _endFadeThresold: 1
   _invertThreshold: 0
-  _feather: 1
+  _feather: 0.5
   _mirrorTexture: 1
 --- !u!23 &87384186
 MeshRenderer:
@@ -438,9 +438,10 @@ MonoBehaviour:
   PointerPose:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
+  RaycasterTint: {r: 0, g: 0, b: 0, a: 0}
   _tubeRenderer: {fileID: 87384185}
   _tubeTrailLength: 2
-  _tubeTrailStep: 0.06
+  _tubeTrailStep: 0.04
   _prelaunchGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 0}
@@ -1620,6 +1621,7 @@ MonoBehaviour:
   PointerPose:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
+  RaycasterTint: {r: 0, g: 0, b: 0, a: 0}
   _tubeRenderer: {fileID: 1837227655}
   _tubeTrailLength: 2
   _tubeTrailStep: 0.06
@@ -2007,6 +2009,7 @@ MonoBehaviour:
   PointerPose:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
+  RaycasterTint: {r: 0, g: 0, b: 0, a: 0}
   _tubeRenderer: {fileID: 0}
   _tubeTrailLength: 2
   _tubeTrailStep: 0.01
@@ -2542,12 +2545,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8208b7127c8e645dab773aa2275b6900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bluePikminPrefab: {fileID: 0}
-  _redPikminPrefab: {fileID: 0}
-  _yellowPikminPrefab: {fileID: 0}
-  _bluePikminUnitAmount: 0
-  _redPikminUnitAmount: 0
-  _yellowPikminUnitAmount: 0
+  _bluePikminPrefab: {fileID: 6054552585659597304, guid: 5fac27b8363ec4842b58ab458c348db6, type: 3}
+  _redPikminPrefab: {fileID: 5331998100451527328, guid: 47308508064b74c3bb195711f5717879, type: 3}
+  _yellowPikminPrefab: {fileID: 8762487516654947776, guid: 1bea3dc7cbc564aa9a0b9faf5fec0f0d, type: 3}
+  _bluePikminUnitAmount: 20
+  _redPikminUnitAmount: 20
+  _yellowPikminUnitAmount: 20
   _rightHand: {fileID: 1644676312}
   _rightHandRayPointer: {fileID: 855605867}
   _debugMode: 0

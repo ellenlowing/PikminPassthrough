@@ -241,7 +241,6 @@ namespace PikminPack
         
         void HandleLanding()
         {
-            _raycaster.SetState(RaycastState.Idle);
             RaycastHit hit = _raycaster.RaycastHit;
             if(hit.collider.CompareTag("Floor"))
             {
@@ -253,6 +252,7 @@ namespace PikminPack
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(-hit.transform.forward, Vector3.up), 360);
                 SetState(PikminState.Climb);
             }
+            _raycaster.SetState(RaycastState.Idle);
         }
     }
 

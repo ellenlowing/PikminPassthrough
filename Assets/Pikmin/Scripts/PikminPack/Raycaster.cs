@@ -100,7 +100,7 @@ namespace PikminPack
 
         private void UpdateIdleState()
         {
-
+            _tubeRenderer.Hide();
         }
 
         private void UpdatePreLaunchState()
@@ -124,10 +124,11 @@ namespace PikminPack
 
         public IEnumerator InLaunchProjectileTrail()
         {
-            _tubeTrailLength = _tubeRenderer.TotalLength * 0.25f;
+            _tubeTrailLength = Mathf.Max(_tubeRenderer.TotalLength * 0.25f, _tubeRenderer.Feather);
+            Debug.Log("Tube length: " + _tubeRenderer.TotalLength + " " + _tubeTrailLength);
             _tubeRenderer.StartFadeThresold = -_tubeTrailLength;
             _tubeRenderer.EndFadeThresold = _tubeRenderer.TotalLength;
-            while(_tubeRenderer.StartFadeThresold < (_tubeRenderer.TotalLength - _tubeTrailLength))
+            while(_tubeRenderer.StartFadeThresold < (_tubeRenderer.TotalLength - _tubeTrailLength - _tubeRenderer.Feather))
             {
                 _tubeRenderer.StartFadeThresold += _tubeTrailStep;
                 _tubeRenderer.EndFadeThresold -= _tubeTrailStep;
