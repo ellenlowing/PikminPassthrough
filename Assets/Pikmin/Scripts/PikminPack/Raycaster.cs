@@ -122,6 +122,7 @@ namespace PikminPack
 
         public IEnumerator InLaunchProjectileTrail()
         {
+            _tubeTrailLength = _tubeRenderer.TotalLength * 0.25f;
             _tubeRenderer.StartFadeThresold = -_tubeTrailLength;
             _tubeRenderer.EndFadeThresold = _tubeRenderer.TotalLength;
             while(_tubeRenderer.StartFadeThresold < (_tubeRenderer.TotalLength - _tubeTrailLength))

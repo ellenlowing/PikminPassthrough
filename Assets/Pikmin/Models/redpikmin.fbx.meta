@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 82c667fa43741450ebb1ed33aafab6a4
+guid: c84f9672736554ad6be5049899035ae3
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,9 +33,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Climb
-      takeName: PikminBlue_skeleton|Climb
-      internalID: 5524551206236836077
+      name: PikminRed_skeleton|Climb
+      takeName: PikminRed_skeleton|Climb
+      internalID: -6360568834262799363
       firstFrame: 0
       lastFrame: 19
       wrapMode: 0
@@ -62,9 +62,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Escape
-      takeName: PikminBlue_skeleton|Escape
-      internalID: -5969486507856720451
+      name: PikminRed_skeleton|Escape
+      takeName: PikminRed_skeleton|Escape
+      internalID: 8046900562424901065
       firstFrame: 0
       lastFrame: 19
       wrapMode: 0
@@ -91,9 +91,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|EscapeStart
-      takeName: PikminBlue_skeleton|EscapeStart
-      internalID: 8240256493837452042
+      name: PikminRed_skeleton|EscapeStart
+      takeName: PikminRed_skeleton|EscapeStart
+      internalID: 1436151758343296351
       firstFrame: 0
       lastFrame: 3
       wrapMode: 0
@@ -120,9 +120,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Fall
-      takeName: PikminBlue_skeleton|Fall
-      internalID: 7909188862289649507
+      name: PikminRed_skeleton|Fall
+      takeName: PikminRed_skeleton|Fall
+      internalID: 3238239846731671160
       firstFrame: 0
       lastFrame: 19
       wrapMode: 0
@@ -149,9 +149,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Hang
-      takeName: PikminBlue_skeleton|Hang
-      internalID: -4788189579960413496
+      name: PikminRed_skeleton|Hang
+      takeName: PikminRed_skeleton|Hang
+      internalID: 2656593411127482921
       firstFrame: 0
       lastFrame: 13
       wrapMode: 0
@@ -178,9 +178,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Notice
-      takeName: PikminBlue_skeleton|Notice
-      internalID: 4832186973396383991
+      name: PikminRed_skeleton|Notice
+      takeName: PikminRed_skeleton|Notice
+      internalID: 9154655530190664805
       firstFrame: 0
       lastFrame: 14
       wrapMode: 0
@@ -207,9 +207,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Run
-      takeName: PikminBlue_skeleton|Run
-      internalID: 2517859712678367685
+      name: PikminRed_skeleton|Run
+      takeName: PikminRed_skeleton|Run
+      internalID: -7468249350333490134
       firstFrame: 0
       lastFrame: 19
       wrapMode: 0
@@ -236,9 +236,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Search
-      takeName: PikminBlue_skeleton|Search
-      internalID: -8913518843891054069
+      name: PikminRed_skeleton|Search
+      takeName: PikminRed_skeleton|Search
+      internalID: -1645267389826901203
       firstFrame: 0
       lastFrame: 58
       wrapMode: 0
@@ -265,9 +265,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|SitDown
-      takeName: PikminBlue_skeleton|SitDown
-      internalID: -5142013507001758991
+      name: PikminRed_skeleton|SitDown
+      takeName: PikminRed_skeleton|SitDown
+      internalID: -3738973972031485007
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -294,9 +294,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|SitDownEnd
-      takeName: PikminBlue_skeleton|SitDownEnd
-      internalID: -2455635534929519523
+      name: PikminRed_skeleton|SitDownEnd
+      takeName: PikminRed_skeleton|SitDownEnd
+      internalID: 3839231556784193505
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -323,9 +323,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|SitDownStart
-      takeName: PikminBlue_skeleton|SitDownStart
-      internalID: -4594378052286082771
+      name: PikminRed_skeleton|SitDownStart
+      takeName: PikminRed_skeleton|SitDownStart
+      internalID: 5143922323435125555
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -352,9 +352,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Sleep
-      takeName: PikminBlue_skeleton|Sleep
-      internalID: -3741987235429738877
+      name: PikminRed_skeleton|Sleep
+      takeName: PikminRed_skeleton|Sleep
+      internalID: 5400846161011237372
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -381,9 +381,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|SleepEnd
-      takeName: PikminBlue_skeleton|SleepEnd
-      internalID: -5479319200512518663
+      name: PikminRed_skeleton|SleepEnd
+      takeName: PikminRed_skeleton|SleepEnd
+      internalID: -2018749901696669325
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -410,9 +410,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|SleepStart
-      takeName: PikminBlue_skeleton|SleepStart
-      internalID: 4869044871841527305
+      name: PikminRed_skeleton|SleepStart
+      takeName: PikminRed_skeleton|SleepStart
+      internalID: 6111170288283295848
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -439,9 +439,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Slide
-      takeName: PikminBlue_skeleton|Slide
-      internalID: 1929536069347616374
+      name: PikminRed_skeleton|Slide
+      takeName: PikminRed_skeleton|Slide
+      internalID: -1608315884528011321
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -468,9 +468,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Somersault
-      takeName: PikminBlue_skeleton|Somersault
-      internalID: 6630081046705338646
+      name: PikminRed_skeleton|Somersault
+      takeName: PikminRed_skeleton|Somersault
+      internalID: -8955476476160882564
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -497,9 +497,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Tumble
-      takeName: PikminBlue_skeleton|Tumble
-      internalID: 3978367075542674318
+      name: PikminRed_skeleton|Tumble
+      takeName: PikminRed_skeleton|Tumble
+      internalID: -8755121127531176620
       firstFrame: 0
       lastFrame: 17
       wrapMode: 0
@@ -508,7 +508,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -526,9 +526,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|TumbleEnd
-      takeName: PikminBlue_skeleton|TumbleEnd
-      internalID: -5288498239172606578
+      name: PikminRed_skeleton|TumbleEnd
+      takeName: PikminRed_skeleton|TumbleEnd
+      internalID: -1553749124951921491
       firstFrame: 0
       lastFrame: 49
       wrapMode: 0
@@ -555,9 +555,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|TumbleStart
-      takeName: PikminBlue_skeleton|TumbleStart
-      internalID: 5692494095671279204
+      name: PikminRed_skeleton|TumbleStart
+      takeName: PikminRed_skeleton|TumbleStart
+      internalID: 4993951772485525363
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -566,7 +566,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -584,9 +584,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Wait
-      takeName: PikminBlue_skeleton|Wait
-      internalID: -2642952057529600533
+      name: PikminRed_skeleton|Wait
+      takeName: PikminRed_skeleton|Wait
+      internalID: -4878748967030965082
       firstFrame: 0
       lastFrame: 19
       wrapMode: 0
@@ -613,9 +613,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Wave
-      takeName: PikminBlue_skeleton|Wave
-      internalID: -6821772545081033258
+      name: PikminRed_skeleton|Wave
+      takeName: PikminRed_skeleton|Wave
+      internalID: -5902871698109490592
       firstFrame: 0
       lastFrame: 63
       wrapMode: 0
@@ -642,38 +642,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: PikminBlue_skeleton|Yawn
-      takeName: PikminBlue_skeleton|Yawn
-      internalID: -5789322434353185893
-      firstFrame: 0
-      lastFrame: 118
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: PikminBlue_skeleton|Yawn.001
-      takeName: PikminBlue_skeleton|Yawn.001
-      internalID: 7911777001935854473
+      name: PikminRed_skeleton|Yawn
+      takeName: PikminRed_skeleton|Yawn
+      internalID: -5627288162844942246
       firstFrame: 0
       lastFrame: 118
       wrapMode: 0

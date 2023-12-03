@@ -123,7 +123,6 @@ namespace PikminPack
         void EnterGetInFormationState()
         {
             _animator.CrossFade(_manager.Run, 0, 0);
-            // Vector3 destination = _manager.GetOffsetPositionGrounded(_manager.LeaderGhost.transform, _formationPositionOffset);
             _getInFormationCoroutine = GetInFormationMovement();
             StartCoroutine(_getInFormationCoroutine);
         }
