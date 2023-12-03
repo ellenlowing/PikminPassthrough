@@ -26,8 +26,12 @@ namespace PikminPack
         public readonly int Climb = Animator.StringToHash("Climb");
 
         // Serialized fields
-        [SerializeField] private PikminUnit _pikminPrefab;
-        [SerializeField] private int _pikminUnitAmount;
+        [SerializeField] private PikminUnit _bluePikminPrefab;
+        [SerializeField] private PikminUnit _redPikminPrefab;
+        [SerializeField] private PikminUnit _yellowPikminPrefab;
+        [SerializeField] private int _bluePikminUnitAmount;
+        [SerializeField] private int _redPikminUnitAmount;
+        [SerializeField] private int _yellowPikminUnitAmount;
         [SerializeField] private OVRHand _rightHand;
         [SerializeField] private Transform _rightHandRayPointer;
         [SerializeField] private bool _debugMode;
@@ -67,11 +71,27 @@ namespace PikminPack
         
         void Start()
         {   
-            for(int i = 0; i < _pikminUnitAmount; i++)
+            int pikminUnitCount = 0;
+            for(int i = 0; i < _bluePikminUnitAmount; i++)
             {
-                var pikminUnit = Instantiate(_pikminPrefab);
-                pikminUnit.Init(this, Raycaster, GetFormationPositionOffset(i));
+                var pikminUnit = Instantiate(_bluePikminPrefab);
+                pikminUnit.Init(this, Raycaster, GetFormationPositionOffset(pikminUnitCount));
                 InSquadPikminUnits.Add(pikminUnit);
+                pikminUnitCount++;
+            }
+            for(int i = 0; i < _redPikminUnitAmount; i++)
+            {
+                var pikminUnit = Instantiate(_redPikminPrefab);
+                pikminUnit.Init(this, Raycaster, GetFormationPositionOffset(pikminUnitCount));
+                InSquadPikminUnits.Add(pikminUnit);
+                pikminUnitCount++;
+            }
+            for(int i = 0; i < _yellowPikminUnitAmount; i++)
+            {
+                var pikminUnit = Instantiate(_yellowPikminPrefab);
+                pikminUnit.Init(this, Raycaster, GetFormationPositionOffset(pikminUnitCount));
+                InSquadPikminUnits.Add(pikminUnit);
+                pikminUnitCount++;
             }
 
             LeaderGhost = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -125,6 +145,19 @@ namespace PikminPack
                         HandleLaunch(unit);
                     }
                 }
+
+                Pose pointerPose = Raycaster.PointerPose;
+                if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0)
+                {
+                    pointerPose.position += new Vector3(Input.GetAxis("Horizontal") * 2f * Time.deltaTime, 0, 0);
+                }
+                if(Mathf.Abs(Input.GetAxis("Vertical")) > 0)
+                {
+                    pointerPose.position += new Vector3(0, 0, Input.GetAxis("Vertical") * 2f * Time.deltaTime);
+                }
+                Vector3 screenPoint = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
+                pointerPose.rotation = Quaternion.LookRotation(screenPoint - pointerPose.position, Vector3.up);
+                Raycaster.PointerPose = pointerPose;
             }
 
             // Update logic for Formation

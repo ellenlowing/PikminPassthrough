@@ -22,7 +22,7 @@ namespace PikminPack
         [HideInInspector] public Vector3 GroundDirectionNorm;
         [HideInInspector] public Vector3 LaunchPosition;
         [HideInInspector] public RaycastHit RaycastHit;
-        [HideInInspector] public Pose PointerPose;
+        public Pose PointerPose;
 
         [SerializeField] private TubeRenderer _tubeRenderer;
         [SerializeField] private float _tubeTrailLength = 2f;
