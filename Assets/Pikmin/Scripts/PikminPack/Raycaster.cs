@@ -30,6 +30,7 @@ namespace PikminPack
         [SerializeField] private float _tubeTrailStep = 0.01f;
         [SerializeField] private Gradient _prelaunchGradient;
         [SerializeField] private Gradient _inlaunchGradient;
+        [SerializeField] private LeanTweenType _inlaunchTweenType;
         private TubePoint [] _arcPoints;
 
 
@@ -96,7 +97,20 @@ namespace PikminPack
         private void EnterInLaunchState()
         {
             _tubeRenderer.Gradient = _inlaunchGradient;
-            StartCoroutine(InLaunchProjectileTrail());
+            _tubeTrailLength = Mathf.Max(_tubeRenderer.TotalLength * 0.01f, _tubeRenderer.Feather);
+            LeanTween.value(gameObject, _tweenStartFadeThreshold, -_tubeTrailLength, _tubeRenderer.TotalLength - _tubeTrailLength, LaunchDuration).setEase(_inlaunchTweenType);
+            LeanTween.value(gameObject, _tweenEndFadeThreshold, _tubeRenderer.TotalLength - _tubeTrailLength, -_tubeTrailLength, LaunchDuration).setEase(_inlaunchTweenType);
+        }
+
+        private void _tweenStartFadeThreshold(float val)
+        {
+            _tubeRenderer.StartFadeThresold = val;
+            _tubeRenderer.RenderTube(_arcPoints, Space.World);
+        }
+        private void _tweenEndFadeThreshold(float val)
+        {
+            _tubeRenderer.EndFadeThresold = val;
+            _tubeRenderer.RenderTube(_arcPoints, Space.World);
         }
 
         private void UpdateIdleState()
@@ -123,26 +137,12 @@ namespace PikminPack
             Physics.Raycast(transform.position, transform.forward, out RaycastHit);
         }
 
-        public IEnumerator InLaunchProjectileTrail()
-        {
-            _tubeTrailLength = Mathf.Max(_tubeRenderer.TotalLength * 0.25f, _tubeRenderer.Feather);
-            Debug.Log("Tube length: " + _tubeRenderer.TotalLength + " " + _tubeTrailLength);
-            _tubeRenderer.StartFadeThresold = -_tubeTrailLength;
-            _tubeRenderer.EndFadeThresold = _tubeRenderer.TotalLength;
-            while(_tubeRenderer.StartFadeThresold < (_tubeRenderer.TotalLength - _tubeTrailLength - _tubeRenderer.Feather))
-            {
-                _tubeRenderer.StartFadeThresold += _tubeTrailStep;
-                _tubeRenderer.EndFadeThresold -= _tubeTrailStep;
-                _tubeRenderer.RenderTube(_arcPoints, Space.World);
-                yield return null;
-            }
-        }
-
         public void DrawProjectile(Vector3 [] projectilePositions)
         {
             UpdateProjectilePoints(projectilePositions);
             _tubeRenderer.StartFadeThresold = 0f;
             _tubeRenderer.EndFadeThresold = 0f;
+            _tubeRenderer.Feather = _tubeRenderer.TotalLength * 0.1f;
             _tubeRenderer.RenderTube(_arcPoints, Space.World);
         }
 
