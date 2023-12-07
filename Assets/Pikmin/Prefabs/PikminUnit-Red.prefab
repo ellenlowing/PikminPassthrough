@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentState: 0
+  _animator: {fileID: 4532910904368892763}
   _topJoint: {fileID: 9027475113154351788}
   _launchSpeed: 1.2
   _inLaunchSpinSpeed: 540

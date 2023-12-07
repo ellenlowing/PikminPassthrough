@@ -108,7 +108,6 @@
     <Compile Include="Assets/Pikmin/Scripts/Prototypes/Controller/PikminController.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineEndless.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
-    <Compile Include="Assets/Pikmin/Scripts/PikminPack/GameManager.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Misc/PlanesIntersection.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingRotate.cs" />
     <Compile Include="Assets/LeanTween/Testing/Testing243.cs" />

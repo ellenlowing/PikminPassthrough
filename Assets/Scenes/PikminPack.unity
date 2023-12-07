@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18107505, g: 0.2224885, b: 0.2831241, a: 1}
+  m_IndirectSpecularColor: {r: 0.18018535, g: 0.22559482, b: 0.30677685, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -447,36 +447,6 @@ MonoBehaviour:
     key0: {r: 1, g: 1, b: 1, a: 0}
     key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 1}
-    key3: {r: 0, g: 0, b: 0, a: 1}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 16384
-    atime2: 65535
-    atime3: 65535
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 3
-  _inlaunchGradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -491,18 +461,48 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
+    atime1: 16384
+    atime2: 44140
+    atime3: 65535
     atime4: 0
     atime5: 0
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_ColorSpace: -1
+    m_ColorSpace: 0
     m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  _inlaunchTweenType: 0
+    m_NumAlphaKeys: 4
+  _inlaunchGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 0}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 1}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 578
+    atime1: 18697
+    atime2: 37972
+    atime3: 46646
+    atime4: 65150
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 5
+  _inlaunchTweenType: 14
 --- !u!120 &91281171
 LineRenderer:
   serializedVersion: 2
@@ -1406,6 +1406,7 @@ MonoBehaviour:
   _phylloc: 0.08
   _leaderFromPackDistanceThreshold: 0.5
   _leaderMoveDistanceThreshold: 0.01
+  IsRightIndexFingerPinching: 0
   Raycaster: {fileID: 1034734688}
   LeaderGhost: {fileID: 0}
   LeaderTransform: {fileID: 1034734684}
@@ -1521,7 +1522,7 @@ Transform:
   m_GameObject: {fileID: 1034734683}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.055, y: 0.307, z: -0.152}
+  m_LocalPosition: {x: 0.055, y: 0.01, z: -0.152}
   m_LocalScale: {x: 0.06641671, y: 0.017472062, z: 0.30056813}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1686,7 +1687,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  _inlaunchTweenType: 4
+  _inlaunchTweenType: 1
 --- !u!120 &1034734689
 LineRenderer:
   serializedVersion: 2
@@ -1926,7 +1927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1329233507
 Transform:
   m_ObjectHideFlags: 0
@@ -2480,7 +2481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1704824571
 Transform:
   m_ObjectHideFlags: 0
@@ -2551,15 +2552,16 @@ MonoBehaviour:
   _bluePikminPrefab: {fileID: 6054552585659597304, guid: 5fac27b8363ec4842b58ab458c348db6, type: 3}
   _redPikminPrefab: {fileID: 5331998100451527328, guid: 47308508064b74c3bb195711f5717879, type: 3}
   _yellowPikminPrefab: {fileID: 8762487516654947776, guid: 1bea3dc7cbc564aa9a0b9faf5fec0f0d, type: 3}
-  _bluePikminUnitAmount: 20
-  _redPikminUnitAmount: 20
-  _yellowPikminUnitAmount: 20
+  _bluePikminUnitAmount: 8
+  _redPikminUnitAmount: 5
+  _yellowPikminUnitAmount: 5
   _rightHand: {fileID: 1644676312}
   _rightHandRayPointer: {fileID: 855605867}
   _debugMode: 0
   _phylloc: 0.08
   _leaderFromPackDistanceThreshold: 0.5
   _leaderMoveDistanceThreshold: 0.01
+  IsRightIndexFingerPinching: 0
   Raycaster: {fileID: 91281170}
   LeaderGhost: {fileID: 0}
   LeaderTransform: {fileID: 1134526119}

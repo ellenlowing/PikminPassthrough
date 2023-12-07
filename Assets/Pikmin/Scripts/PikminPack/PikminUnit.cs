@@ -10,12 +10,14 @@ namespace PikminPack
         public PikminState CurrentState = PikminState.Idle;
         private PikminUnitManager _manager;
         private Raycaster _raycaster;
-        private Animator _animator;
-        private bool _inSquad;
+        public bool InSquad;
         private Vector3 _topJointPositionOffset;
         private Vector3 _formationPositionOffset;
         private IEnumerator _getInFormationCoroutine;
+        private Vector3 _randomPluckPosition;
 
+        [SerializeField] private Animator _animator;
+        [SerializeField] private Animation _animation;
         [SerializeField] private Transform _topJoint;
         [SerializeField] private float _launchSpeed;
         [SerializeField] private float _inLaunchSpinSpeed;
@@ -24,8 +26,6 @@ namespace PikminPack
 
         void Start()
         {
-            _animator = GetComponent<Animator>();
-            _inSquad = true;
             _topJointPositionOffset = _topJoint.position;
         }
 
@@ -33,6 +33,14 @@ namespace PikminPack
         {
             switch(CurrentState)
             {
+                case PikminState.WaitForPluck:
+                    UpdateWaitForPluckState();
+                    break;
+                
+                case PikminState.InPluck:
+                    UpdateInPluckState();
+                    break;
+
                 case PikminState.Idle:
                     UpdateIdleState();
                     break;
@@ -62,11 +70,13 @@ namespace PikminPack
             }
         }
         
-        public void Init(PikminUnitManager manager, Raycaster raycaster, Vector3 formationPositionOffset)
+        public void Init(PikminUnitManager manager, Raycaster raycaster, Vector3 formationPositionOffset, PikminState initialState, bool inSquad)
         {
             _manager = manager;
             _raycaster = raycaster;
             _formationPositionOffset = formationPositionOffset;
+            InSquad = inSquad;
+            SetState(initialState);
         }
 
         public void SetState(PikminState state)
@@ -75,6 +85,14 @@ namespace PikminPack
             {
                 switch(state)
                 {
+                    case PikminState.WaitForPluck:
+                        EnterWaitForPluckState();
+                        break;
+                    
+                    case PikminState.InPluck:
+                        EnterInPluckState();
+                        break;
+
                     case PikminState.Idle:
                         EnterIdleState();
                         break;
@@ -107,46 +125,64 @@ namespace PikminPack
             }
         }
 
+
+        /* ------ WAIT FOR PLUCK ------ */
+        void EnterWaitForPluckState()
+        {
+            _animator.CrossFade(_manager.Idle, 0, 0);
+            _randomPluckPosition = new Vector3(Random.Range(-0.5f, 0.5f), -0.16f, Random.Range(-0.5f, 0.5f));
+        }
+
+        void UpdateWaitForPluckState()
+        {
+            transform.position = _randomPluckPosition;
+
+            // TODO detect if controller is close to my location OR if hand is touching the tip of pikmin 
+            if(Vector3.Distance(new Vector3(_randomPluckPosition.x, 0, _randomPluckPosition.z), _manager.GroundedLeaderPosition) < 0.1f)
+            {
+                if(_manager.IsRightIndexFingerPinching)
+                {
+                    SetState(PikminState.InPluck);
+                }
+            }
+        }
+
+
+        /* ------ IN PLUCK ------ */
+        void EnterInPluckState()
+        {
+            _animator.CrossFade(_manager.Somersault, 0, 0);
+        }
+
+        void UpdateInPluckState()
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 0f, transform.position.z), Time.deltaTime * _manager.PikminWalkSpeed);
+            if(_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            {
+                InSquad = true;
+                SetState(PikminState.FollowLeader);
+            }
+        }
+
+        
+        /* ------ IDLE ------ */
         void EnterIdleState()
         {
             _animator.CrossFade(_manager.Idle, 0, 0);
         }
 
+        void UpdateIdleState()
+        {
+            transform.rotation = Quaternion.LookRotation(_manager.GroundedLeaderPosition - transform.position, Vector3.up);
+        }
+
+
+        /* ------ FOLLOW LEADER ------ */
         void EnterFollowLeaderState()
         {
             _animator.CrossFade(_manager.Run, 0, 0);
             if(_getInFormationCoroutine != null) StopCoroutine(_getInFormationCoroutine);
             _getInFormationCoroutine = null;
-        }
-
-        void EnterGetInFormationState()
-        {
-            _animator.CrossFade(_manager.Run, 0, 0);
-            _getInFormationCoroutine = GetInFormationMovement();
-            StartCoroutine(_getInFormationCoroutine);
-        }
-
-        void EnterPreLaunchState()
-        {
-            _animator.CrossFade(_manager.Fall, 0, 0);
-            _raycaster.RaycasterTint = _raycasterTint;
-        }
-
-        void EnterInLaunchState()
-        {
-            _inSquad = false;
-            _animator.CrossFade(_manager.Hang, 0, 0);
-            StartCoroutine(ProjectileMovement(_raycaster.LaunchPosition, _raycaster.GroundDirectionNorm, _raycaster.V0, _raycaster.LaunchAngle, _raycaster.LaunchDuration));
-        }
-
-        void EnterClimbState()
-        {
-            _animator.CrossFade(_manager.Climb, 0, 0);
-        }
-
-        void UpdateIdleState()
-        {
-            transform.rotation = Quaternion.LookRotation(_manager.GroundedLeaderPosition - transform.position, Vector3.up);
         }
 
         void UpdateFollowLeaderState()
@@ -156,23 +192,51 @@ namespace PikminPack
             transform.position = Vector3.MoveTowards(transform.position, newPosition, Time.deltaTime * _manager.PikminWalkSpeed);
         }
 
+
+         /* ------ GET IN FORMATION ------ */
+        void EnterGetInFormationState()
+        {
+            _animator.CrossFade(_manager.Run, 0, 0);
+            _getInFormationCoroutine = GetInFormationMovement();
+            StartCoroutine(_getInFormationCoroutine);
+        }
         void UpdateGetInFormationState()
         {
         }
 
+
+        /* ------ PRELAUNCH ------ */
+        void EnterPreLaunchState()
+        {
+            _animator.CrossFade(_manager.Fall, 0, 0);
+            _raycaster.RaycasterTint = _raycasterTint;
+        }
         void UpdatePreLaunchState()
         {
             transform.position = _raycaster.transform.position - (_topJoint.position - transform.position);
             transform.rotation = Quaternion.LookRotation(-_raycaster.transform.forward, Vector3.up); 
         }
 
+
+        /* ------ INLAUNCH ------ */
+        void EnterInLaunchState()
+        {
+            InSquad = false;
+            _animator.CrossFade(_manager.Hang, 0, 0);
+            StartCoroutine(ProjectileMovement(_raycaster.LaunchPosition, _raycaster.GroundDirectionNorm, _raycaster.V0, _raycaster.LaunchAngle, _raycaster.LaunchDuration));
+        }
         void UpdateInLaunchState()
         {
         }
 
+
+        /* ------ CLIMB ------ */
+        void EnterClimbState()
+        {
+            _animator.CrossFade(_manager.Climb, 0, 0);
+        }
         void UpdateClimbState()
         {
-
         }
 
         public void DetermineFormationState()

@@ -6,6 +6,8 @@ namespace PikminPack
 {
     public enum PikminState
     {
+        WaitForPluck,
+        InPluck,
         Idle,
         FollowLeader,
         GetInFormation,
@@ -24,6 +26,7 @@ namespace PikminPack
         public readonly int Notice = Animator.StringToHash("Notice");
         public readonly int Fall = Animator.StringToHash("Fall");
         public readonly int Climb = Animator.StringToHash("Climb");
+        public readonly int Somersault = Animator.StringToHash("Somersault");
 
         // Serialized fields
         [SerializeField] private PikminUnit _bluePikminPrefab;
@@ -41,7 +44,7 @@ namespace PikminPack
 
         // Private variables
         private PikminUnit _unitToLaunch;
-        private bool _isRightIndexFingerPinching;
+        public bool IsRightIndexFingerPinching;
 
         // Component References
 
@@ -92,7 +95,7 @@ namespace PikminPack
             {
                 Vector3 formationPositionOffset = GetFormationPositionOffset(pikminUnitCount);
                 var pikminUnit = Instantiate(_bluePikminPrefab, GetOffsetPositionGrounded(LeaderTransform, formationPositionOffset), Quaternion.identity);
-                pikminUnit.Init(this, Raycaster, formationPositionOffset);
+                pikminUnit.Init(this, Raycaster, formationPositionOffset, PikminState.Idle, true);
                 InSquadPikminUnits.Add(pikminUnit);
                 pikminUnitCount++;
             }
@@ -100,7 +103,7 @@ namespace PikminPack
             {
                 Vector3 formationPositionOffset = GetFormationPositionOffset(pikminUnitCount);
                 var pikminUnit = Instantiate(_redPikminPrefab, GetOffsetPositionGrounded(LeaderTransform, formationPositionOffset), Quaternion.identity);
-                pikminUnit.Init(this, Raycaster, formationPositionOffset);
+                pikminUnit.Init(this, Raycaster, formationPositionOffset, PikminState.Idle, true);
                 InSquadPikminUnits.Add(pikminUnit);
                 pikminUnitCount++;
             }
@@ -108,11 +111,20 @@ namespace PikminPack
             {
                 Vector3 formationPositionOffset = GetFormationPositionOffset(pikminUnitCount);
                 var pikminUnit = Instantiate(_yellowPikminPrefab, GetOffsetPositionGrounded(LeaderTransform, formationPositionOffset), Quaternion.identity);
-                pikminUnit.Init(this, Raycaster, formationPositionOffset);
+                pikminUnit.Init(this, Raycaster, formationPositionOffset, PikminState.Idle, true);
                 InSquadPikminUnits.Add(pikminUnit);
                 pikminUnitCount++;
             }
 
+            // instantiate pikmin seeds
+            for(int i = 0; i < 3; i++)
+            {
+                Vector3 formationPositionOffset = GetFormationPositionOffset(pikminUnitCount);
+                var pikminUnit = Instantiate(_yellowPikminPrefab, GetOffsetPositionGrounded(LeaderTransform, formationPositionOffset), Quaternion.identity);
+                pikminUnit.Init(this, Raycaster, formationPositionOffset, PikminState.WaitForPluck, false);
+                WildPikminUnits.Add(pikminUnit);
+                pikminUnitCount++;
+            }
         }
 
         void Update()
@@ -125,12 +137,16 @@ namespace PikminPack
                     Raycaster.PointerPose = new Pose(_rightHandRayPointer.position, _rightHandRayPointer.rotation);
 
                     // Check pinching status
-                    _isRightIndexFingerPinching = _rightHand.GetFingerIsPinching(OVRHand.HandFinger.Index);
-                    if(_isRightIndexFingerPinching && !_unitToLaunch)
+                    // TODO check if finger is touching pikmin
+                    // 1. if touching a pikmin seed (waiting to be plucked), pikmin will be plucked
+                    // 2. if touching an active pikmin, pikmin will be grabbed
+                    // 3. if it's not touching, pikmin throw a projectile
+                    IsRightIndexFingerPinching = _rightHand.GetFingerIsPinching(OVRHand.HandFinger.Index);
+                    if(IsRightIndexFingerPinching && !_unitToLaunch)
                     {
                         HandlePrelaunch();
                     }
-                    else if (!_isRightIndexFingerPinching && _unitToLaunch != null && _unitToLaunch.TryGetComponent<PikminUnit>(out PikminUnit unit))
+                    else if (!IsRightIndexFingerPinching && _unitToLaunch != null && _unitToLaunch.TryGetComponent<PikminUnit>(out PikminUnit unit))
                     {
                         HandleLaunch(unit);
                     }
@@ -139,6 +155,7 @@ namespace PikminPack
             else
             {
                 // Debug helper
+                IsRightIndexFingerPinching = Input.GetKey(KeyCode.B);
                 if(Input.GetKey(KeyCode.Space) && !_unitToLaunch)
                 {
                     HandlePrelaunch();
@@ -186,6 +203,16 @@ namespace PikminPack
             foreach(PikminUnit unit in InSquadPikminUnits)
             {
                 unit.DetermineFormationState();
+            }
+
+            for(int i = WildPikminUnits.Count - 1; i >= 0; i--)
+            {
+                var unit = WildPikminUnits[i];
+                if(unit.InSquad)
+                {
+                    InSquadPikminUnits.Add(unit);
+                    WildPikminUnits.Remove(unit);
+                }
             }
             
             LastGroundedLeaderPosition = GroundedLeaderPosition;

@@ -95,6 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3943a198b2fd1442e99e581ad2b1d5d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentState: 2
+  _animator: {fileID: 1489550762038598934}
+  _animation: {fileID: 0}
   _topJoint: {fileID: 1031219839576832730}
   _launchSpeed: 1.2
   _inLaunchSpinSpeed: 540
