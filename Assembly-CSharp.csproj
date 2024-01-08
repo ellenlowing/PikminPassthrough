@@ -989,6 +989,10 @@
       <HintPath>Library/ScriptAssemblies/AssistantVoiceCommandCommon.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Burst.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Facebook.Wit.Dictation">
       <HintPath>Library/ScriptAssemblies/Facebook.Wit.Dictation.dll</HintPath>
       <Private>False</Private>
@@ -999,6 +1003,10 @@
     </Reference>
     <Reference Include="Meta.WitAi.Editor">
       <HintPath>Library/ScriptAssemblies/Meta.WitAi.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Animation.Rigging.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.Animation.Rigging.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VoiceSDK.Telemetry">
@@ -1097,10 +1105,6 @@
       <HintPath>Library/ScriptAssemblies/Oculus.Interaction.OVR.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Meta.VoiceSDK.Mic.Other">
-      <HintPath>Library/ScriptAssemblies/Meta.VoiceSDK.Mic.Other.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1121,6 +1125,10 @@
       <HintPath>Library/ScriptAssemblies/Unity.XR.Interaction.Toolkit.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Meta.VoiceSDK.Mic.Other">
+      <HintPath>Library/ScriptAssemblies/Meta.VoiceSDK.Mic.Other.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Oculus.Interaction">
       <HintPath>Library/ScriptAssemblies/Oculus.Interaction.dll</HintPath>
       <Private>False</Private>
@@ -1137,6 +1145,10 @@
       <HintPath>Library/ScriptAssemblies/Meta.Voice.VSDKHub.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Animation.Rigging">
+      <HintPath>Library/ScriptAssemblies/Unity.Animation.Rigging.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.EditorCoroutines.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1151,6 +1163,10 @@
     </Reference>
     <Reference Include="Meta.Wit.Composer">
       <HintPath>Library/ScriptAssemblies/Meta.Wit.Composer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
@@ -1213,12 +1229,12 @@
       <HintPath>Library/ScriptAssemblies/Oculus.Platform.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="VoiceSDK.Runtime.Composer">
-      <HintPath>Library/ScriptAssemblies/VoiceSDK.Runtime.Composer.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VoiceSDK.Runtime.Composer">
+      <HintPath>Library/ScriptAssemblies/VoiceSDK.Runtime.Composer.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Meta.Voice.Hub.Runtime">
