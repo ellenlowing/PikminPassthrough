@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 87384186}
   - component: {fileID: 87384185}
   m_Layer: 0
-  m_Name: ProceduralArc (1)
+  m_Name: ProceduralArc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -470,7 +470,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_ColorSpace: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 4
   _inlaunchGradient:
@@ -500,7 +500,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_ColorSpace: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 5
   _inlaunchTweenType: 14
