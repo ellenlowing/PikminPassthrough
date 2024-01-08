@@ -44,6 +44,7 @@ namespace PikminPack
 
         // Private variables
         private PikminUnit _unitToLaunch;
+        private GameObject rightIndexFingerPinchCollider;
         public bool IsRightIndexFingerPinching;
 
         // Component References
@@ -85,6 +86,11 @@ namespace PikminPack
             ghostRb.isKinematic = true;
             Destroy(LeaderGhost.GetComponent<SphereCollider>());
             Destroy(LeaderGhost.GetComponent<MeshRenderer>());
+
+            // rightIndexFingerPinchCollider = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            // rightIndexFingerPinchCollider.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+            // SphereCollider sphereCollider = rightIndexFingerPinchCollider.GetComponent<SphereCollider>();
+            // sphereCollider.isTrigger = true;
 
             LeaderMoveEnough = false;
             GroundedLeaderPosition = new Vector3(LeaderTransform.position.x, 0, LeaderTransform.position.z);

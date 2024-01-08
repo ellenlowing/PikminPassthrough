@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "com.meta.xr.depthapi": "https://github.com/oculus-samples/Unity-DepthAPI.git?path=/Packages/com.meta.xr.depthapi",
-    "com.meta.xr.sdk.all": "59.0.0",
+    "com.meta.xr.sdk.all": "60.0.0",
+    "com.meta.xr.sdk.interaction.ovr.samples": "60.0.0",
     "com.meta.xr.sdk.utilities": "59.0.0-deprecated",
     "com.unity.animation.rigging": "1.2.1",
     "com.unity.collab-proxy": "2.2.0",

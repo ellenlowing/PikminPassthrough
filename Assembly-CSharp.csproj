@@ -137,8 +137,29 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplines.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets/LeanTween/ReadMe.txt" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
     <None Include="Assets/LeanTween/License.txt" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" />
+    <None Include="Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" />
+    <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -467,6 +488,10 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library/PackageCache/com.unity.visualscripting@1.9.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@3.2.1/Runtime/Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
@@ -989,24 +1014,28 @@
       <HintPath>Library/ScriptAssemblies/AssistantVoiceCommandCommon.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Burst.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>Library/ScriptAssemblies/Unity.AI.Navigation.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Facebook.Wit.Dictation">
-      <HintPath>Library/ScriptAssemblies/Facebook.Wit.Dictation.dll</HintPath>
+    <Reference Include="Unity.Burst.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Meta.XR.Editor.Tags">
       <HintPath>Library/ScriptAssemblies/Meta.XR.Editor.Tags.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Meta.WitAi.Editor">
-      <HintPath>Library/ScriptAssemblies/Meta.WitAi.Editor.dll</HintPath>
+    <Reference Include="Meta.Voice.Samples.WitResponseDebugger">
+      <HintPath>Library/ScriptAssemblies/Meta.Voice.Samples.WitResponseDebugger.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Animation.Rigging.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.Animation.Rigging.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Meta.WitAi.Conduit">
+      <HintPath>Library/ScriptAssemblies/Meta.WitAi.Conduit.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VoiceSDK.Telemetry">
@@ -1021,12 +1050,12 @@
       <HintPath>Library/ScriptAssemblies/VoiceSDK.Dictation.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    <Reference Include="Oculus.Interaction.Samples.Editor">
+      <HintPath>Library/ScriptAssemblies/Oculus.Interaction.Samples.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Meta.WitAi.TTS.Editor">
-      <HintPath>Library/ScriptAssemblies/Meta.WitAi.TTS.Editor.dll</HintPath>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
@@ -1037,16 +1066,16 @@
       <HintPath>Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Meta.Wit.Dictation">
+      <HintPath>Library/ScriptAssemblies/Meta.Wit.Dictation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.XR.CoreUtils">
       <HintPath>Library/ScriptAssemblies/Unity.XR.CoreUtils.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
       <HintPath>Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Meta.WitAi.Conduit.Editor">
-      <HintPath>Library/ScriptAssemblies/Meta.WitAi.Conduit.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MetaXrSimulator.Editor">
@@ -1089,28 +1118,32 @@
       <HintPath>Library/ScriptAssemblies/Unity.XR.CoreUtils.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Meta.WitAi.TTS">
-      <HintPath>Library/ScriptAssemblies/Meta.WitAi.TTS.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Meta.WitAi">
-      <HintPath>Library/ScriptAssemblies/Meta.WitAi.dll</HintPath>
+    <Reference Include="Meta.VoiceSDK.Mic.Other">
+      <HintPath>Library/ScriptAssemblies/Meta.VoiceSDK.Mic.Other.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Meta.WitAi.Conduit.Editor">
+      <HintPath>Library/ScriptAssemblies/Meta.WitAi.Conduit.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Oculus.Interaction.OVR.Editor">
       <HintPath>Library/ScriptAssemblies/Oculus.Interaction.OVR.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    <Reference Include="meta.xr.sdk.sharedassets.editor">
+      <HintPath>Library/ScriptAssemblies/meta.xr.sdk.sharedassets.editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Facebook.Wit.Dictation.Editor">
-      <HintPath>Library/ScriptAssemblies/Facebook.Wit.Dictation.Editor.dll</HintPath>
+    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
+      <HintPath>Library/ScriptAssemblies/Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Meta.Voice.Samples.WitShapes">
@@ -1125,28 +1158,44 @@
       <HintPath>Library/ScriptAssemblies/Unity.XR.Interaction.Toolkit.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Meta.VoiceSDK.Mic.Other">
-      <HintPath>Library/ScriptAssemblies/Meta.VoiceSDK.Mic.Other.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Oculus.Interaction">
-      <HintPath>Library/ScriptAssemblies/Oculus.Interaction.dll</HintPath>
+    <Reference Include="Meta.XR.Editor.Callbacks">
+      <HintPath>Library/ScriptAssemblies/Meta.XR.Editor.Callbacks.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Meta.XR.BuildingBlocks">
       <HintPath>Library/ScriptAssemblies/Meta.XR.BuildingBlocks.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Oculus.Interaction">
+      <HintPath>Library/ScriptAssemblies/Oculus.Interaction.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="xr.sdk.sharedassets.runtime">
+      <HintPath>Library/ScriptAssemblies/xr.sdk.sharedassets.runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Oculus.VR.Editor">
       <HintPath>Library/ScriptAssemblies/Oculus.VR.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Meta.WitAi">
+      <HintPath>Library/ScriptAssemblies/Meta.WitAi.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Meta.Voice.VSDKHub.Editor">
       <HintPath>Library/ScriptAssemblies/Meta.Voice.VSDKHub.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Meta.WitAi.Editor">
+      <HintPath>Library/ScriptAssemblies/Meta.WitAi.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Animation.Rigging">
       <HintPath>Library/ScriptAssemblies/Unity.Animation.Rigging.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Oculus.Haptics">
+      <HintPath>Library/ScriptAssemblies/Oculus.Haptics.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
@@ -1177,12 +1226,20 @@
       <HintPath>Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Meta.WitAi.TTS.Editor">
+      <HintPath>Library/ScriptAssemblies/Meta.WitAi.TTS.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="meta.xr.mrutilitykit">
+      <HintPath>Library/ScriptAssemblies/meta.xr.mrutilitykit.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
@@ -1225,16 +1282,16 @@
       <HintPath>Library/ScriptAssemblies/Meta.WitAi.Lib.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Oculus.Platform">
-      <HintPath>Library/ScriptAssemblies/Oculus.Platform.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VoiceSDK.Runtime.Composer">
       <HintPath>Library/ScriptAssemblies/VoiceSDK.Runtime.Composer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Oculus.Platform">
+      <HintPath>Library/ScriptAssemblies/Oculus.Platform.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Meta.Voice.Hub.Runtime">
@@ -1285,12 +1342,12 @@
       <HintPath>Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Meta.XR.Audio">
-      <HintPath>Library/ScriptAssemblies/Meta.XR.Audio.dll</HintPath>
+    <Reference Include="Unity.AI.Navigation.Updater">
+      <HintPath>Library/ScriptAssemblies/Unity.AI.Navigation.Updater.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Meta.WitAi.Conduit">
-      <HintPath>Library/ScriptAssemblies/Meta.WitAi.Conduit.dll</HintPath>
+    <Reference Include="Meta.XR.Audio">
+      <HintPath>Library/ScriptAssemblies/Meta.XR.Audio.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
@@ -1309,16 +1366,28 @@
       <HintPath>Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Meta.WitAi.TTS">
+      <HintPath>Library/ScriptAssemblies/Meta.WitAi.TTS.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Oculus.Interaction.OVR.Samples">
+      <HintPath>Library/ScriptAssemblies/Oculus.Interaction.OVR.Samples.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Meta.WitAI.Lib.Editor">
       <HintPath>Library/ScriptAssemblies/Meta.WitAI.Lib.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Meta.Voice.Samples.WitResponseDebugger">
-      <HintPath>Library/ScriptAssemblies/Meta.Voice.Samples.WitResponseDebugger.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.AI.Navigation.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Oculus.Haptics.Editor">
+      <HintPath>Library/ScriptAssemblies/Oculus.Haptics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
@@ -1327,6 +1396,10 @@
     </Reference>
     <Reference Include="Oculus.VR">
       <HintPath>Library/ScriptAssemblies/Oculus.VR.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Meta.Wit.Dictation.Editor">
+      <HintPath>Library/ScriptAssemblies/Meta.Wit.Dictation.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VoiceSDK.Runtime">
