@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using PikminPack;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,12 +10,15 @@ public class PassthroughPlaneHandler : MonoBehaviour
 {
     private OVRSceneAnchor _sceneAnchor;
     private OVRSemanticClassification _classification;
+    private PikminUnitManager _pikminUnitManager;
 
     void Start()
     {
         _sceneAnchor = GetComponent<OVRSceneAnchor>();
         _classification = GetComponent<OVRSemanticClassification>();
+        _pikminUnitManager = PikminUnitManager.Instance;
         ClassifyAndTag();
+        _pikminUnitManager.enabled = true;
     }
 
     void ClassifyAndTag()
@@ -32,7 +37,8 @@ public class PassthroughPlaneHandler : MonoBehaviour
                 gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Floor");
                 gameObject.tag = "Floor";
                 gameObject.transform.GetChild(0).tag = "Floor";
-                Debug.Log("Found Floor");
+                _pikminUnitManager.FloorLevel = gameObject.transform.position.y;
+                Debug.Log("Found Floor " + gameObject.transform.position.y);
             }
             else if (_classification.Contains(OVRSceneManager.Classification.Ceiling))
             {

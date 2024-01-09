@@ -78,6 +78,7 @@
     <Compile Include="Assets/Pikmin/Scripts/Misc/ControlLeader.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/LogoCinematic.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralAdvancedTechniques.cs" />
+    <Compile Include="Assets/Pikmin/Scripts/Misc/DebugInteraction.cs" />
     <Compile Include="Assets/LeanTween/Testing/TestingSceneSwitching.cs" />
     <Compile Include="Assets/Pikmin/Scripts/Helper/ProjectileLibrary.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralSequencer.cs" />

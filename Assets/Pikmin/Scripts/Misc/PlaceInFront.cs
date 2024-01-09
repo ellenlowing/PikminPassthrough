@@ -9,6 +9,7 @@ public class PlaceInFront : MonoBehaviour
 
     void Start()
     {
+        transform.position = sceneCamera.transform.position + sceneCamera.transform.forward * .1f;
     }
 
     void Update()

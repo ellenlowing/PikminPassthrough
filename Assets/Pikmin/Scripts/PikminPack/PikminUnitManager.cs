@@ -27,6 +27,7 @@ namespace PikminPack
         public readonly int Fall = Animator.StringToHash("Fall");
         public readonly int Climb = Animator.StringToHash("Climb");
         public readonly int Somersault = Animator.StringToHash("Somersault");
+        public readonly int Sleep = Animator.StringToHash("Sleep");
 
         // Serialized fields
         [SerializeField] private PikminUnit _bluePikminPrefab;
@@ -44,7 +45,6 @@ namespace PikminPack
 
         // Private variables
         private PikminUnit _unitToLaunch;
-        private GameObject rightIndexFingerPinchCollider;
         public bool IsRightIndexFingerPinching;
 
         // Component References
@@ -63,9 +63,12 @@ namespace PikminPack
         [HideInInspector] public Vector3 LeaderGhostMoveDifference;
         public float PikminWalkSpeed;
         public float PikminTurnSpeed;
+        public float FloorLevel = 0f;
         
         void Awake() 
         {
+            Debug.Log("Pikmin unit manager: Awake");
+
             if(Instance != null && Instance != this)
             {
                 Destroy(this);
@@ -75,7 +78,8 @@ namespace PikminPack
         
         void Start()
         {   
-            
+            Debug.Log("Pikmin unit manager: Start");
+
             LeaderGhost = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             LeaderGhost.transform.position = GetOffsetPositionGrounded(LeaderTransform, Vector3.zero);
             LeaderGhost.transform.rotation = LeaderTransform.rotation;
@@ -86,11 +90,6 @@ namespace PikminPack
             ghostRb.isKinematic = true;
             Destroy(LeaderGhost.GetComponent<SphereCollider>());
             Destroy(LeaderGhost.GetComponent<MeshRenderer>());
-
-            // rightIndexFingerPinchCollider = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            // rightIndexFingerPinchCollider.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-            // SphereCollider sphereCollider = rightIndexFingerPinchCollider.GetComponent<SphereCollider>();
-            // sphereCollider.isTrigger = true;
 
             LeaderMoveEnough = false;
             GroundedLeaderPosition = new Vector3(LeaderTransform.position.x, 0, LeaderTransform.position.z);
@@ -123,14 +122,14 @@ namespace PikminPack
             }
 
             // instantiate pikmin seeds
-            for(int i = 0; i < 3; i++)
-            {
-                Vector3 formationPositionOffset = GetFormationPositionOffset(pikminUnitCount);
-                var pikminUnit = Instantiate(_yellowPikminPrefab, GetOffsetPositionGrounded(LeaderTransform, formationPositionOffset), Quaternion.identity);
-                pikminUnit.Init(this, Raycaster, formationPositionOffset, PikminState.WaitForPluck, false);
-                WildPikminUnits.Add(pikminUnit);
-                pikminUnitCount++;
-            }
+            // for(int i = 0; i < 13; i++)
+            // {
+            //     Vector3 formationPositionOffset = GetFormationPositionOffset(pikminUnitCount);
+            //     var pikminUnit = Instantiate(_yellowPikminPrefab, GetOffsetPositionGrounded(LeaderTransform, formationPositionOffset), Quaternion.identity);
+            //     pikminUnit.Init(this, Raycaster, formationPositionOffset, PikminState.WaitForPluck, false);
+            //     WildPikminUnits.Add(pikminUnit);
+            //     pikminUnitCount++;
+            // }
         }
 
         void Update()

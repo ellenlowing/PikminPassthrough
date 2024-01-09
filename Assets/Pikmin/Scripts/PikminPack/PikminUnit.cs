@@ -129,13 +129,14 @@ namespace PikminPack
         /* ------ WAIT FOR PLUCK ------ */
         void EnterWaitForPluckState()
         {
-            _animator.CrossFade(_manager.Idle, 0, 0);
-            _randomPluckPosition = new Vector3(Random.Range(-0.5f, 0.5f), -0.16f, Random.Range(-0.5f, 0.5f));
+            _animator.CrossFade(_manager.Sleep, 0, 0);
+            _randomPluckPosition = new Vector3(Random.Range(-0.5f, 0.5f), 2f, Random.Range(-0.5f, 0.5f));
+            Debug.Log("Wait for pluck");
         }
 
         void UpdateWaitForPluckState()
         {
-            transform.position = _randomPluckPosition;
+            // transform.position = new Vector3(_randomPluckPosition.x, _manager.FloorLevel, _randomPluckPosition.z);
 
             // TODO detect if controller is close to my location OR if hand is touching the tip of pikmin 
             if(Vector3.Distance(new Vector3(_randomPluckPosition.x, 0, _randomPluckPosition.z), _manager.GroundedLeaderPosition) < 0.1f)
