@@ -37,8 +37,8 @@ public class PassthroughPlaneHandler : MonoBehaviour
                 gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Floor");
                 gameObject.tag = "Floor";
                 gameObject.transform.GetChild(0).tag = "Floor";
-                _pikminUnitManager.FloorLevel = gameObject.transform.position.y;
-                Debug.Log("Found Floor " + gameObject.transform.position.y);
+                // _pikminUnitManager.FloorLevel = gameObject.transform.position.y;
+                // Debug.Log("Found Floor " + gameObject.transform.position.y);
             }
             else if (_classification.Contains(OVRSceneManager.Classification.Ceiling))
             {

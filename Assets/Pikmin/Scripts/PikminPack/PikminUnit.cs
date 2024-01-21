@@ -12,12 +12,25 @@ namespace PikminPack
         private Raycaster _raycaster;
         public bool InSquad;
         private Vector3 _topJointPositionOffset;
+
         private Vector3 _formationPositionOffset;
+        public Vector3 FormationPositionOffset
+        {
+            get
+            {
+                return _formationPositionOffset;
+            }
+            set
+            {
+                _formationPositionOffset = value;
+            }
+        }
+
         private IEnumerator _getInFormationCoroutine;
         private Vector3 _randomPluckPosition;
 
         [SerializeField] private Animator _animator;
-        [SerializeField] private Animation _animation;
+        // [SerializeField] private Animation _animation;
         [SerializeField] private Transform _topJoint;
         [SerializeField] private float _launchSpeed;
         [SerializeField] private float _inLaunchSpinSpeed;
@@ -129,8 +142,8 @@ namespace PikminPack
         /* ------ WAIT FOR PLUCK ------ */
         void EnterWaitForPluckState()
         {
-            _animator.CrossFade(_manager.Sleep, 0, 0);
-            _randomPluckPosition = new Vector3(Random.Range(-0.5f, 0.5f), 2f, Random.Range(-0.5f, 0.5f));
+            _animator.CrossFade(_manager.WaitForPluck, 0, 0);
+            _randomPluckPosition = new Vector3(Random.Range(-0.5f, 0.5f), -0.15f, Random.Range(-0.5f, 0.5f));
             Debug.Log("Wait for pluck");
         }
 
@@ -139,7 +152,7 @@ namespace PikminPack
             // transform.position = new Vector3(_randomPluckPosition.x, _manager.FloorLevel, _randomPluckPosition.z);
 
             // TODO detect if controller is close to my location OR if hand is touching the tip of pikmin 
-            if(Vector3.Distance(new Vector3(_randomPluckPosition.x, 0, _randomPluckPosition.z), _manager.GroundedLeaderPosition) < 0.1f)
+            if(Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), _manager.GroundedLeaderPosition) < 0.05f)
             {
                 if(_manager.IsRightIndexFingerPinching)
                 {
@@ -163,6 +176,10 @@ namespace PikminPack
                 InSquad = true;
                 SetState(PikminState.FollowLeader);
             }
+        }
+        public void SetInPluckState()
+        {
+            SetState(PikminState.InPluck);
         }
 
         

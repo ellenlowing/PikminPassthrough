@@ -28,6 +28,7 @@ namespace PikminPack
         public readonly int Climb = Animator.StringToHash("Climb");
         public readonly int Somersault = Animator.StringToHash("Somersault");
         public readonly int Sleep = Animator.StringToHash("Sleep");
+        public readonly int WaitForPluck = Animator.StringToHash("WaitForPluck");
 
         // Serialized fields
         [SerializeField] private PikminUnit _bluePikminPrefab;
@@ -122,14 +123,14 @@ namespace PikminPack
             }
 
             // instantiate pikmin seeds
-            // for(int i = 0; i < 13; i++)
-            // {
-            //     Vector3 formationPositionOffset = GetFormationPositionOffset(pikminUnitCount);
-            //     var pikminUnit = Instantiate(_yellowPikminPrefab, GetOffsetPositionGrounded(LeaderTransform, formationPositionOffset), Quaternion.identity);
-            //     pikminUnit.Init(this, Raycaster, formationPositionOffset, PikminState.WaitForPluck, false);
-            //     WildPikminUnits.Add(pikminUnit);
-            //     pikminUnitCount++;
-            // }
+            for(int i = 0; i < 13; i++)
+            {
+                Vector3 formationPositionOffset = GetFormationPositionOffset(pikminUnitCount);
+                var pikminUnit = Instantiate(_yellowPikminPrefab, new Vector3(Random.Range(-0.5f, 0.5f), FloorLevel, Random.Range(-0.5f, 0.5f)), Quaternion.identity);
+                pikminUnit.Init(this, Raycaster, formationPositionOffset, PikminState.WaitForPluck, false);
+                WildPikminUnits.Add(pikminUnit);
+                pikminUnitCount++;
+            }
         }
 
         void Update()
@@ -217,6 +218,7 @@ namespace PikminPack
                 {
                     InSquadPikminUnits.Add(unit);
                     WildPikminUnits.Remove(unit);
+                    unit.FormationPositionOffset = GetFormationPositionOffset(InSquadPikminUnits.Count-1);
                 }
             }
             
@@ -250,7 +252,7 @@ namespace PikminPack
         {
             Vector3 newOffset = refTransform.forward * positionOffset.z + refTransform.right * positionOffset.x;
             Vector3 newPosition = refTransform.position + newOffset;
-            newPosition.y = 0;
+            newPosition.y = FloorLevel;
             return newPosition;
         }
 

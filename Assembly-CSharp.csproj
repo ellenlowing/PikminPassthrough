@@ -1115,16 +1115,16 @@
       <HintPath>Library/ScriptAssemblies/Oculus.Platform.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.XR.CoreUtils.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.XR.CoreUtils.Editor.dll</HintPath>
+    <Reference Include="meta.xr.sdk.sharedassets.editor">
+      <HintPath>Library/ScriptAssemblies/meta.xr.sdk.sharedassets.editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Meta.VoiceSDK.Mic.Other">
-      <HintPath>Library/ScriptAssemblies/Meta.VoiceSDK.Mic.Other.dll</HintPath>
+    <Reference Include="Unity.XR.CoreUtils.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.XR.CoreUtils.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Meta.WitAi.Conduit.Editor">
@@ -1133,10 +1133,6 @@
     </Reference>
     <Reference Include="Oculus.Interaction.OVR.Editor">
       <HintPath>Library/ScriptAssemblies/Oculus.Interaction.OVR.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="meta.xr.sdk.sharedassets.editor">
-      <HintPath>Library/ScriptAssemblies/meta.xr.sdk.sharedassets.editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
@@ -1155,8 +1151,8 @@
       <HintPath>Library/ScriptAssemblies/Unity.XR.Oculus.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.XR.Interaction.Toolkit">
-      <HintPath>Library/ScriptAssemblies/Unity.XR.Interaction.Toolkit.dll</HintPath>
+    <Reference Include="xr.sdk.sharedassets.runtime">
+      <HintPath>Library/ScriptAssemblies/xr.sdk.sharedassets.runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Meta.XR.Editor.Callbacks">
@@ -1171,8 +1167,12 @@
       <HintPath>Library/ScriptAssemblies/Oculus.Interaction.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="xr.sdk.sharedassets.runtime">
-      <HintPath>Library/ScriptAssemblies/xr.sdk.sharedassets.runtime.dll</HintPath>
+    <Reference Include="Unity.XR.Interaction.Toolkit">
+      <HintPath>Library/ScriptAssemblies/Unity.XR.Interaction.Toolkit.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Meta.VoiceSDK.Mic.Other">
+      <HintPath>Library/ScriptAssemblies/Meta.VoiceSDK.Mic.Other.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Oculus.VR.Editor">
@@ -1367,10 +1367,6 @@
       <HintPath>Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Meta.WitAi.TTS">
-      <HintPath>Library/ScriptAssemblies/Meta.WitAi.TTS.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Oculus.Interaction.OVR.Samples">
       <HintPath>Library/ScriptAssemblies/Oculus.Interaction.OVR.Samples.dll</HintPath>
       <Private>False</Private>
@@ -1381,6 +1377,10 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Meta.WitAi.TTS">
+      <HintPath>Library/ScriptAssemblies/Meta.WitAi.TTS.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
